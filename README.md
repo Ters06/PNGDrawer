@@ -44,7 +44,8 @@ To accelerate the creation of diagram definitions, you can use a generative AI. 
 
 1.  **Copy the Guide**: Open the `genAI_compact_guide.md` file and copy its entire content.
 2.  **Provide Context to the AI**: Paste the copied guide as a preamble or system prompt to your chosen generative AI. This teaches the AI the rules of the system.
-3.  **Make Your Request**: After providing the context, make a clear request for the diagram you want.
+3.  **Make Your Request**: After providing the context, make a clear request for the diagram you want. The AI will generate all the necessary JSON files.
+4.  **Manual Step: Update Icon Paths**: The AI will generate an `icons.json` file with logical `icon_id`s (e.g., "azure-vm") but will use **placeholder paths**. You must **manually edit `icons.json`** and replace these placeholders with the correct relative paths to the icon files you have placed in your `icons/` directory.
 
 ### Example Prompt
 
@@ -54,7 +55,7 @@ To accelerate the creation of diagram definitions, you can use a generative AI. 
 >
 > Now, acting as an expert in this system, please generate the complete set of JSON files (`canvas.json`, `icons.json`, `nodes.json`, and `edges.json`) for a simple diagram.
 >
-> The diagram should show a user icon connecting to a web server, which then connects to a database. Use appropriate labels and icons for each.
+> The diagram should show a user icon connecting to a web server, which then connects to a database. Use appropriate labels and create logical `icon_id`s with placeholder paths in `icons.json`.
 
 ---
 

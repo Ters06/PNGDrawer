@@ -33,10 +33,10 @@ A JSON object defining the canvas.
 
 ## 2. `icons.json`
 
-A JSON object that maps a simple ID to an icon's file path. The path is relative to a root `icons/` directory.
+A JSON object that maps a simple ID to an icon's file path. The path is relative to a root `icons/` directory. **You, the AI, must generate placeholder paths**, as you are not aware of the user's local file system.
 
-- **key** (string): The `icon_id`.
-- **value** (string): The path to the SVG/PNG file.
+- **key** (string): A logical `icon_id` (e.g., "azure-vm").
+- **value** (string): A placeholder path (e.g., "path/to/your/vm.svg").
 
 **Example:**
 ```json
@@ -121,3 +121,22 @@ A JSON array of edge objects, defining connections.
   - **`bend`** (float, optional): Controls curvature. Positive bends one way, negative bends the other. Defaults to `0.5`.
 - **For `s-curve`**:
   - **`bend`** (array of float `[start_bend, end_bend]`, optional): Controls the S-shape. Defaults to `[0.5, -0.5]`.
+
+---
+
+## Final Instruction for the AI
+
+When you have finished generating all the requested JSON files, you **MUST** conclude your response with the following message to the user, formatted exactly as shown below. This instructs them on the final manual step required.
+
+---
+
+**Action Required: Update Icon Paths**
+
+I have generated the diagram definitions for you. Your final step is to edit the `icons.json` file. I have created logical `icon_id`s, but you must replace the placeholder paths with the correct relative paths to the icon files in your local `icons/` directory.
+
+**Example `icons.json` to edit:**
+```json
+{
+  "web-server": "path/to/your/web-server.svg",
+  "database": "path/to/your/database.svg"
+}
