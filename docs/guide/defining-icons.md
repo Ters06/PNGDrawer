@@ -1,5 +1,7 @@
 # Guide: Icons (`icons.json`)
 
+> **Important Note:** This project does not include a library of icons. You are responsible for sourcing your own icon files (in `.svg` or `.png` format) and placing them inside the `icons/` directory.
+
 The `icons.json` file provides a clean and maintainable way to manage your icon assets. It acts as a central mapping where you associate a simple, reusable ID with the actual file path of an icon.
 
 This abstraction is highly recommended. It allows you to change an icon's file path in one place, and every node that uses its ID will be automatically updated. It also keeps your `nodes.json` file cleaner and focused on object definition rather than asset paths.

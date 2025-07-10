@@ -33,6 +33,9 @@ Before you begin, ensure you have the following installed on your system (prefer
       pip install -r requirements.txt
       ```
 
+3.  **Gather Your Icons**
+    This project does **not** ship with a set of icons. You must find and place your own `.svg` or `.png` icon files into the `icons/` directory. You can create subdirectories (e.g., `icons/azure/`, `icons/fortinet/`) to keep them organized. Official icon sets from vendors like Microsoft Azure or Fortinet are a great place to start.
+
 ## Your First Diagram
 
 1.  **Create a Definition Folder**
