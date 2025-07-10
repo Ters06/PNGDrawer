@@ -37,5 +37,5 @@ diagram-generator/
     A simple script in the root directory that serves as the main entry point for running the application.
 
 ---
-**Next:** [The Definition System](./definition-system.md)
+**Next:** [The Definition System](./definition-system.md)\
 **Back to index:** [Index](./index.md)

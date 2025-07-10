@@ -85,5 +85,5 @@ This centers an object perfectly on the canvas.
 ![Boundary Placement Example](../images/placement_boundary_example.svg)
 
 ---
-**Next:** [Layering Objects](./layering.md)
+**Next:** [Layering Objects](./layering.md)\
 **Back to index:** [Index](./index.md)

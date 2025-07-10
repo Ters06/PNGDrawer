@@ -23,5 +23,5 @@ This example creates a canvas that is 1200 pixels wide and 800 pixels tall with 
 ![Canvas Example](../images/canvas_example.svg)
 
 ---
-**Next:** [Nodes (`nodes.json`)](./defining-nodes.md)
+**Next:** [Nodes (`nodes.json`)](./defining-nodes.md)\
 **Back to index:** [Index](./index.md)

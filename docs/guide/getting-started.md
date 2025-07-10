@@ -72,5 +72,5 @@ Before you begin, ensure you have the following installed on your system (prefer
     You can now open the `diagram.png` file in the `output/` folder to see your rendered text.
 
 ---
-**Next:** [Project Structure](./project-structure.md)
+**Next:** [Project Structure](./project-structure.md)\
 **Back to index:** [Index](./index.md)

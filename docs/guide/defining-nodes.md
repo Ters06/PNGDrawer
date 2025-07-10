@@ -85,5 +85,5 @@ Used to draw standalone text.
 ![Text Node Example](../images/text_node_example.svg)
 
 ---
-**Next:** [Icons (`icons.json`)](./defining-icons.md)
+**Next:** [Icons (`icons.json`)](./defining-icons.md)\
 **Back to index:** [Index](./index.md)

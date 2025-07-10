@@ -38,5 +38,5 @@ The `edges.json` file defines all the connections (lines and arrows) between you
 ![Edge Definition Example](../images/edge_definition_example.svg)
 
 ---
-**Next:** [The Placement System](./placement-system.md)
+**Next:** [The Placement System](./placement-system.md)\
 **Back to index:** [Index](./index.md)
