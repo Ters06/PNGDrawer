@@ -39,3 +39,4 @@ The `edges.json` file defines all the connections (lines and arrows) between you
 
 ---
 **Next:** [The Placement System](./placement-system.md)
+**Back to index:** [Index](./index.md)

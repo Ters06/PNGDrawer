@@ -73,3 +73,4 @@ Before you begin, ensure you have the following installed on your system (prefer
 
 ---
 **Next:** [Project Structure](./project-structure.md)
+**Back to index:** [Index](./index.md)

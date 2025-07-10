@@ -41,3 +41,4 @@ You would then use these IDs in your `nodes.json` file like this:
 
 ---
 **Next:** [Connections (`edges.json`)](./defining-edges.md)
+**Back to index:** [Index](./index.md)

@@ -38,3 +38,4 @@ diagram-generator/
 
 ---
 **Next:** [The Definition System](./definition-system.md)
+**Back to index:** [Index](./index.md)

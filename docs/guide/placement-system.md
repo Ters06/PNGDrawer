@@ -86,3 +86,4 @@ This centers an object perfectly on the canvas.
 
 ---
 **Next:** [Layering Objects](./layering.md)
+**Back to index:** [Index](./index.md)

@@ -33,11 +33,11 @@
   <text x="200" y="130" class="label" fill="#a9a9a9">background_color</text>
 
   <!-- Width Dimension -->
-  <path d="M 50 20 L 350 20" class="arrow" />
-  <text x="200" y="40" class="dim">width: 1200px</text>
+  <path d="M 50 40 L 350 40" class="arrow" />
+  <text x="200" y="35" class="dim">width: 1200px</text>
 
   <!-- Height Dimension -->
-  <path d="M 20 50 L 20 200" class="arrow" />
-  <text x="25" y="125" transform="rotate(-90, 25, 125)" class="dim">height: 800px</text>
+  <path d="M 40 50 L 40 200" class="arrow" />
+  <text x="30" y="125" transform="rotate(-90, 30, 125)" class="dim">height: 800px</text>
 
 </svg>

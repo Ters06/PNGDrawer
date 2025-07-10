@@ -32,3 +32,4 @@ This segmented approach allows you to manage complex diagrams easily by keeping 
 
 ---
 **Next:** [The Canvas (`canvas.json`)](./defining-canvas.md)
+**Back to index:** [Index](./index.md)

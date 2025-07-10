@@ -86,3 +86,4 @@ Used to draw standalone text.
 
 ---
 **Next:** [Icons (`icons.json`)](./defining-icons.md)
+**Back to index:** [Index](./index.md)
