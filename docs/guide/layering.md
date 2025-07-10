@@ -42,15 +42,31 @@ In this example, we create a background shape, place an icon on top of it, and t
     }
   },
   {
-    "id": "status_text",
-    "type": "text",
-    "text": "Online",
-    "color": "#27AE60",
+    "id": "status_badge",
+    "type": "shape",
+    "shape": "rounded_rectangle",
+    "size": [54, 20],
+    "color": "#FFFFFF",
+    "radius": 10,
     "layer": 2,
     "placement": {
       "type": "relative",
       "target_id": "server_icon",
       "target_anchor": "top_right",
+      "self_anchor": "center",
+      "offset": { "x": 0, "y": -5 }
+    }
+  },
+  {
+    "id": "status_text",
+    "type": "text",
+    "text": "Online",
+    "color": "#27AE60",
+    "layer": 3,
+    "placement": {
+      "type": "relative",
+      "target_id": "status_badge",
+      "target_anchor": "center",
       "self_anchor": "center"
     }
   }
