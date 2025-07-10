@@ -15,7 +15,7 @@ All node types share these common properties:
 
 ## Node Type: `icon`
 
-Used to draw an SVG or PNG icon.
+Used to place an SVG or PNG icon.
 
 -   **`icon_id`** (string, required): The ID of the icon to use, as defined in your `icons.json` mapping file.
 -   **`size`** (array of int, optional): An array `[width, height]` to resize the icon. If omitted, the icon's native size is used.

@@ -22,7 +22,6 @@
       }
     </style>
   </defs>
-  <rect x="43" y="10" width="64" height="64" rx="4" class="icon-box" />
-  <text x="75" y="42" class="icon-text">VM</text>
+  <image x="43" y="10" width="64" height="64" rx="4" href="10021-icon-service-Virtual-Machine.svg" />
   <text x="75" y="95" class="label">Production Server</text>
 </svg>
