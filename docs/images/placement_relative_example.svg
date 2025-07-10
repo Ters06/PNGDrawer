@@ -59,7 +59,7 @@
   <text x="10" y="30" class="step-label">Step 1: Align Anchors</text>
   <rect x="110" y="55" width="80" height="50" class="ghost" />
   <circle cx="150" cy="80" r="3" class="anchor-dot" fill="#3498DB" />
-  <text x="155" y="95" class="label" fill="#3498DB">self_anchor: center</text>
+  <text x="200" y="95" class="label" fill="#3498DB">self_anchor: center</text>
   <path d="M 150 80 L 150 80" class="line" />
 
   <!-- Step 2: Offset -->
