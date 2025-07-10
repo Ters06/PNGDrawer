@@ -6,22 +6,8 @@
         font-size: 14px;
         text-anchor: middle;
       }
-
-      .icon-box {
-        fill: #0078D4;
-        stroke: #005A9E;
-        stroke-width: 1;
-      }
-
-      .icon-text {
-        fill: white;
-        font-family: 'Segoe UI', sans-serif;
-        font-size: 12px;
-        font-weight: bold;
-        text-anchor: middle;
-      }
     </style>
   </defs>
-  <image x="43" y="10" width="64" height="64" rx="4" href="10021-icon-service-Virtual-Machine.svg" />
+  <image x="43" y="10" width="64" height="64" rx="4" xlink:href="10021-icon-service-Virtual-Machine.svg" />
   <text x="75" y="95" class="label">Production Server</text>
 </svg>
