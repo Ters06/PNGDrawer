@@ -1,0 +1,29 @@
+[
+    {
+        "from": "web_vm",
+        "to": "ilb",
+        "label": "TCP 80"
+    },
+    {
+        "from": "ilb",
+        "to": "fgt_a"
+    },
+    {
+        "from": "ilb",
+        "to": "fgt_b"
+    },
+    {
+        "from": "fgt_a",
+        "to": "elb"
+    },
+    {
+        "from": "fgt_b",
+        "to": "elb"
+    },
+    {
+        "from": "elb",
+        "to": "internet",
+        "style": "dashed",
+        "color": "red"
+    }
+]

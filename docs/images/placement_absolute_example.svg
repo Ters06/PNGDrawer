@@ -1,0 +1,30 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .canvas {
+        fill: none;
+        stroke: #a9a9a9;
+        stroke-width: 2;
+        stroke-dasharray: 5, 5;
+      }
+
+      .object {
+        fill: #3498DB;
+        stroke: #2980B9;
+      }
+
+      .label {
+        font-family: monospace;
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="298" height="198" class="canvas" />
+  <rect x="50" y="100" width="80" height="50" class="object" />
+  <text x="55" y="128" fill="white" class="label">Object</text>
+  <!-- Coordinates -->
+  <path d="M 0 100 L 50 100" stroke="#a9a9a9" stroke-width="1" stroke-dasharray="2,2" />
+  <path d="M 50 0 L 50 100" stroke="#a9a9a9" stroke-width="1" stroke-dasharray="2,2" />
+  <text x="10" y="115" class="label">y=100</text>
+  <text x="55" y="20" class="label">x=50</text>
+</svg>

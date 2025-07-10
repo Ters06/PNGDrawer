@@ -1,0 +1,6 @@
+{
+    "azure-vm": "azure/compute/10021-icon-service-Virtual-Machine.svg",
+    "azure-lb": "azure/networking/10062-icon-service-Load-Balancers.svg",
+    "fortinet-fw": "fortinet/FortiGate.svg",
+    "generic-internet": "generic/internet.svg"
+}

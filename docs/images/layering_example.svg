@@ -1,0 +1,36 @@
+<svg width="220" height="120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .icon-box {
+        fill: #0078D4;
+        stroke: #005A9E;
+        stroke-width: 1;
+      }
+
+      .icon-text {
+        fill: white;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        text-anchor: middle;
+      }
+
+      .status-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        fill: #27AE60;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+  <!-- Layer 0: Background -->
+  <rect x="10" y="10" width="200" height="100" rx="15" fill="#DFE6E9" stroke="#B2BEC3" stroke-width="1" />
+  <!-- Layer 1: Icon -->
+  <g transform="translate(78, 28)">
+    <rect width="64" height="64" rx="4" class="icon-box" />
+    <text x="32" y="36" class="icon-text">VM</text>
+  </g>
+  <!-- Layer 2: Text -->
+  <text x="142" y="34" class="status-text">Online</text>
+</svg>

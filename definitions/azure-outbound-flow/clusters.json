@@ -1,0 +1,12 @@
+[
+    {
+        "id": "vnet_cluster",
+        "label": "Spoke VNet",
+        "nodes": [
+            "web_vm",
+            "ilb",
+            "fgt_a",
+            "fgt_b"
+        ]
+    }
+]

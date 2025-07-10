@@ -1,0 +1,55 @@
+[
+    {
+        "source_id": "web_vm",
+        "target_id": "ilb",
+        "label": "TCP 80"
+    },
+    {
+        "source_id": "ilb",
+        "target_id": "fgt_a",
+        "connection": {
+            "type": "s-curve",
+            "bend": [
+                0.4,
+                -0.3
+            ]
+        }
+    },
+    {
+        "source_id": "ilb",
+        "target_id": "fgt_b",
+        "connection": {
+            "type": "s-curve",
+            "bend": [
+                -0.4,
+                0.3
+            ]
+        }
+    },
+    {
+        "source_id": "fgt_a",
+        "target_id": "elb",
+        "connection": {
+            "type": "s-curve",
+            "bend": [
+                -0.4,
+                0.3
+            ]
+        }
+    },
+    {
+        "source_id": "fgt_b",
+        "target_id": "elb",
+        "connection": {
+            "type": "s-curve",
+            "bend": [
+                0.4,
+                -0.3
+            ]
+        }
+    },
+    {
+        "source_id": "elb",
+        "target_id": "internet"
+    }
+]
