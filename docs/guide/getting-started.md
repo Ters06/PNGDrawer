@@ -16,7 +16,7 @@ Before you begin, ensure you have the following installed on your system (prefer
     First, get a local copy of the application.
     ```bash
     git clone <your-repository-url>
-    cd diagram-generator
+    cd PNGDrawer
     ```
 
 2.  **Install Dependencies**
@@ -32,7 +32,6 @@ Before you begin, ensure you have the following installed on your system (prefer
       ```bash
       pip install -r requirements.txt
       ```
-      *(Note: You may need to create a `requirements.txt` file containing `Pillow` and `cairosvg`)*
 
 ## Your First Diagram
 

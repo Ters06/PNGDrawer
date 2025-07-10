@@ -1,6 +1,6 @@
-# Declarative Diagram Renderer
+# PNGDrawer - A Declarative Diagram Renderer
 
-This application generates high-quality PNG diagrams from a set of simple, declarative JSON files. It allows you to define complex layouts, connections, and styles using a "diagram as code" approach, ensuring your documentation is version-controllable and easy to maintain.
+PNGDrawer is an application that generates high-quality PNG diagrams from a set of simple, declarative JSON files. It allows you to define complex layouts, connections, and styles using a "diagram as code" approach, ensuring your documentation is version-controllable and easy to maintain.
 
 The rendering engine is built with Python and the Pillow library, using an addon-based architecture that makes it highly extensible.
 
@@ -31,6 +31,30 @@ The rendering engine is built with Python and the Pillow library, using an addon
     ```
 
 3.  **Find your output**: The final `my-new-diagram.png` will be saved in the `output/` directory.
+
+---
+
+## Using with Generative AI
+
+To accelerate the creation of diagram definitions, you can use a generative AI. A compact guide detailing the application's JSON schema is provided in the `docs/` folder.
+
+**File**: `docs/genAI_compact_guide.md`
+
+### How to Use
+
+1.  **Copy the Guide**: Open the `genAI_compact_guide.md` file and copy its entire content.
+2.  **Provide Context to the AI**: Paste the copied guide as a preamble or system prompt to your chosen generative AI. This teaches the AI the rules of the system.
+3.  **Make Your Request**: After providing the context, make a clear request for the diagram you want.
+
+### Example Prompt
+
+> (Paste the entire content of genAI_compact_guide.md here)
+>
+> ---
+>
+> Now, acting as an expert in this system, please generate the complete set of JSON files (`canvas.json`, `icons.json`, `nodes.json`, and `edges.json`) for a simple diagram.
+>
+> The diagram should show a user icon connecting to a web server, which then connects to a database. Use appropriate labels and icons for each.
 
 ---
 
