@@ -2,6 +2,7 @@
 import math
 from .base import Base
 from ..models.node import ShapeObject
+from .utils import draw_dashed_path
 
 class Shape(Base):
     """Draws all ShapeObject instances, with full support for custom borders."""
@@ -18,8 +19,12 @@ class Shape(Base):
             if node.shape == 'rounded_rectangle':
                 radius = node.radius * self.scale_factor if node.radius else 15 * self.scale_factor
                 
-                # 1. Draw the fill first
-                self.draw.rounded_rectangle([x, y, x + w, y + h], radius=radius, fill=node.color)
+                # --- FIX: Handle 'none' as a transparent fill ---
+                fill_color = node.color if node.color != "none" else None
+                
+                # 1. Draw the fill
+                if fill_color:
+                    self.draw.rounded_rectangle([x, y, x + w, y + h], radius=radius, fill=fill_color)
 
                 # 2. Draw the border if it exists
                 if node.border:
@@ -27,39 +32,35 @@ class Shape(Base):
                     border_width = int(node.border.get('width', 1) * self.scale_factor)
                     border_type = node.border.get('type', 'solid')
 
+                    # For solid borders, Pillow can draw them directly on the shape
                     if border_type == 'solid':
                         self.draw.rounded_rectangle([x, y, x + w, y + h], radius=radius, outline=border_color, width=border_width)
                     else:
-                        # For dashed/dotted, we draw the path manually
+                        # For dashed/dotted, we have to trace the path manually
                         dash_length = 10 * self.scale_factor if border_type == 'dashed' else 2 * self.scale_factor
-                        self._draw_dashed_rounded_rect(x, y, w, h, radius, border_color, border_width, dash_length)
+                        path = self._get_rounded_rect_path(x, y, w, h, radius)
+                        draw_dashed_path(self.draw, path, border_color, border_width, dash_length)
 
-    def _draw_dashed_line(self, start, end, color, width, dash_length):
-        """Helper to draw a simple dashed line segment."""
-        dx, dy = end[0] - start[0], end[1] - start[1]
-        length = math.hypot(dx, dy)
-        if length == 0: return
-        
-        unit_dx, unit_dy = dx / length, dy / length
-        
-        current_length = 0
-        while current_length < length:
-            draw_end_length = min(current_length + dash_length, length)
-            p_start = (start[0] + unit_dx * current_length, start[1] + unit_dy * current_length)
-            p_end = (start[0] + unit_dx * draw_end_length, start[1] + unit_dy * draw_end_length)
-            self.draw.line([p_start, p_end], fill=color, width=width)
-            current_length += dash_length * 2
+    def _get_rounded_rect_path(self, x, y, w, h, r):
+        """Generates a list of points representing the path of a rounded rectangle."""
+        path = []
+        # Top-left to top-right
+        path.extend(self._get_arc_points(x + r, y + r, r, 180, 270, 20))
+        # Top-right to bottom-right
+        path.extend(self._get_arc_points(x + w - r, y + r, r, 270, 360, 20))
+        # Bottom-right to bottom-left
+        path.extend(self._get_arc_points(x + w - r, y + h - r, r, 0, 90, 20))
+        # Bottom-left to top-left
+        path.extend(self._get_arc_points(x + r, y + h - r, r, 90, 180, 20))
+        path.append(path[0]) # Close the path
+        return path
 
-    def _draw_dashed_rounded_rect(self, x, y, w, h, r, color, width, dash_length):
-        """Draws a dashed border for a rounded rectangle."""
-        # Draw the four straight sides
-        self._draw_dashed_line((x + r, y), (x + w - r, y), color, width, dash_length)
-        self._draw_dashed_line((x + r, y + h), (x + w - r, y + h), color, width, dash_length)
-        self._draw_dashed_line((x, y + r), (x, y + h - r), color, width, dash_length)
-        self._draw_dashed_line((x + w, y + r), (x + w, y + h - r), color, width, dash_length)
-
-        # Draw the four corner arcs
-        self.draw.arc([x, y, x + 2*r, y + 2*r], 180, 270, fill=color, width=width) # Top-left
-        self.draw.arc([x + w - 2*r, y, x + w, y + 2*r], 270, 360, fill=color, width=width) # Top-right
-        self.draw.arc([x, y + h - 2*r, x + 2*r, y + h], 90, 180, fill=color, width=width) # Bottom-left
-        self.draw.arc([x + w - 2*r, y + h - 2*r, x + w, y + h], 0, 90, fill=color, width=width) # Bottom-right
+    def _get_arc_points(self, cx, cy, r, start_angle, end_angle, num_segments):
+        """Helper to approximate an arc with a series of points."""
+        points = []
+        for i in range(num_segments + 1):
+            angle = math.radians(start_angle + (end_angle - start_angle) * i / num_segments)
+            px = cx + r * math.cos(angle)
+            py = cy + r * math.sin(angle)
+            points.append((px, py))
+        return points

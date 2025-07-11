@@ -14,7 +14,7 @@ The rendering engine draws all objects in ascending order of their layer number.
 
 ## Example
 
-In this example, we create a background shape, place an icon on top of it, and then add a text label on top of everything.
+In this example, we create a background, place an icon on top, then add a status badge on top of the icon, and finally place text on the badge. This demonstrates a multi-level layering approach.
 
 **`definitions/my-diagram/nodes.json`**
 ```json
@@ -75,5 +75,5 @@ In this example, we create a background shape, place an icon on top of it, and t
 ![Layering Example](../images/layering_example.svg)
 
 ---
-**Next:** [Straight, Curved, and S-Curved Lines](./connection-styles.md)\
+**Next:** [Connection Styles](./connection-styles.md)\
 **Back to index:** [Index](./index.md)

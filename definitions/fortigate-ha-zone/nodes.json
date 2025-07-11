@@ -1,0 +1,440 @@
+[
+    {
+        "id": "main_vnet",
+        "type": "shape",
+        "shape": "rounded_rectangle",
+        "color": "none",
+        "size": [
+            1200,
+            800
+        ],
+        "layer": 0,
+        "placement": {
+            "type": "absolute",
+            "x": 150,
+            "y": 50
+        },
+        "border": {
+            "type": "solid",
+            "color": "#0078D4",
+            "width": 2
+        }
+    },
+    {
+        "id": "external_section",
+        "type": "shape",
+        "shape": "rounded_rectangle",
+        "color": "#F2F2F2",
+        "size": [
+            250,
+            650
+        ],
+        "layer": 1,
+        "placement": {
+            "type": "relative",
+            "target_id": "main_vnet",
+            "target_anchor": "center_left",
+            "self_anchor": "center_left",
+            "offset": {
+                "x": 50
+            }
+        },
+        "label": {
+            "text": "External",
+            "position": "top"
+        }
+    },
+    {
+        "id": "internal_section",
+        "type": "shape",
+        "shape": "rounded_rectangle",
+        "color": "#F2F2F2",
+        "size": [
+            250,
+            650
+        ],
+        "layer": 1,
+        "placement": {
+            "type": "relative",
+            "target_id": "external_section",
+            "target_anchor": "top_right",
+            "self_anchor": "top_left",
+            "offset": {
+                "x": 200
+            }
+        },
+        "label": {
+            "text": "Internal",
+            "position": "top"
+        }
+    },
+    {
+        "id": "protected_a_section",
+        "type": "shape",
+        "shape": "rounded_rectangle",
+        "color": "#F2F2F2",
+        "size": [
+            250,
+            180
+        ],
+        "layer": 1,
+        "placement": {
+            "type": "relative",
+            "target_id": "internal_section",
+            "target_anchor": "top_right",
+            "self_anchor": "top_left",
+            "offset": {
+                "x": 100
+            }
+        },
+        "label": {
+            "text": "Protected A",
+            "position": "top"
+        }
+    },
+    {
+        "id": "protected_b_section",
+        "type": "shape",
+        "shape": "rounded_rectangle",
+        "color": "#F2F2F2",
+        "size": [
+            250,
+            180
+        ],
+        "layer": 1,
+        "placement": {
+            "type": "relative",
+            "target_id": "protected_a_section",
+            "target_anchor": "bottom_left",
+            "self_anchor": "top_left",
+            "offset": {
+                "y": 20
+            }
+        },
+        "label": {
+            "text": "Protected B",
+            "position": "top"
+        }
+    },
+    {
+        "id": "protected_z_section",
+        "type": "shape",
+        "shape": "rounded_rectangle",
+        "color": "#F2F2F2",
+        "size": [
+            250,
+            180
+        ],
+        "layer": 1,
+        "placement": {
+            "type": "relative",
+            "target_id": "protected_b_section",
+            "target_anchor": "bottom_left",
+            "self_anchor": "top_left",
+            "offset": {
+                "y": 20
+            }
+        },
+        "label": {
+            "text": "Protected Z",
+            "position": "top"
+        }
+    },
+    {
+        "id": "az1_box",
+        "type": "shape",
+        "shape": "rounded_rectangle",
+        "color": "none",
+        "size": [
+            650,
+            200
+        ],
+        "layer": 2,
+        "placement": {
+            "type": "relative",
+            "target_id": "external_section",
+            "target_anchor": "top_left",
+            "self_anchor": "top_left",
+            "offset": {
+                "x": 25,
+                "y": 100
+            }
+        },
+        "border": {
+            "type": "dashed",
+            "color": "#0078D4",
+            "width": 2
+        },
+        "label": {
+            "text": "Availability Zone 1",
+            "position": "top_left"
+        }
+    },
+    {
+        "id": "az2_box",
+        "type": "shape",
+        "shape": "rounded_rectangle",
+        "color": "none",
+        "size": [
+            650,
+            200
+        ],
+        "layer": 2,
+        "placement": {
+            "type": "relative",
+            "target_id": "az1_box",
+            "target_anchor": "bottom_left",
+            "self_anchor": "top_left",
+            "offset": {
+                "y": 40
+            }
+        },
+        "border": {
+            "type": "dashed",
+            "color": "#0078D4",
+            "width": 2
+        },
+        "label": {
+            "text": "Availability Zone 2",
+            "position": "top_left"
+        }
+    },
+    {
+        "id": "public_ip",
+        "type": "icon",
+        "icon_id": "azure-public-ip",
+        "label": "Public IP Address",
+        "size": [
+            64,
+            64
+        ],
+        "layer": 3,
+        "placement": {
+            "type": "relative",
+            "target_id": "external_section",
+            "target_anchor": "center_left",
+            "self_anchor": "center_right",
+            "offset": {
+                "x": -50
+            }
+        }
+    },
+    {
+        "id": "public_lb",
+        "type": "icon",
+        "icon_id": "azure-lb",
+        "label": "Public Load Balancer",
+        "size": [
+            64,
+            64
+        ],
+        "layer": 3,
+        "placement": {
+            "type": "relative",
+            "target_id": "az1_box",
+            "target_anchor": "center_left",
+            "self_anchor": "center",
+            "offset": {
+                "x": 100
+            }
+        }
+    },
+    {
+        "id": "fgt_1",
+        "type": "icon",
+        "icon_id": "fortinet-fw",
+        "size": [
+            96,
+            96
+        ],
+        "layer": 3,
+        "placement": {
+            "type": "relative",
+            "target_id": "az1_box",
+            "target_anchor": "center",
+            "self_anchor": "center",
+            "offset": {
+                "x": 100
+            }
+        }
+    },
+    {
+        "id": "fgt_2",
+        "type": "icon",
+        "icon_id": "fortinet-fw",
+        "size": [
+            96,
+            96
+        ],
+        "layer": 3,
+        "placement": {
+            "type": "relative",
+            "target_id": "az2_box",
+            "target_anchor": "center",
+            "self_anchor": "center",
+            "offset": {
+                "x": 100
+            }
+        }
+    },
+    {
+        "id": "internal_lb",
+        "type": "icon",
+        "icon_id": "azure-lb",
+        "label": "Internal Load Balancer",
+        "size": [
+            64,
+            64
+        ],
+        "layer": 3,
+        "placement": {
+            "type": "relative",
+            "target_id": "internal_section",
+            "target_anchor": "center",
+            "self_anchor": "center"
+        }
+    },
+    {
+        "id": "user_a",
+        "type": "icon",
+        "icon_id": "generic-user",
+        "size": [
+            48,
+            48
+        ],
+        "layer": 2,
+        "placement": {
+            "type": "relative",
+            "target_id": "protected_a_section",
+            "target_anchor": "center_left",
+            "self_anchor": "center",
+            "offset": {
+                "x": 20
+            }
+        }
+    },
+    {
+        "id": "user_b",
+        "type": "icon",
+        "icon_id": "generic-user",
+        "size": [
+            48,
+            48
+        ],
+        "layer": 2,
+        "placement": {
+            "type": "relative",
+            "target_id": "protected_b_section",
+            "target_anchor": "center_left",
+            "self_anchor": "center",
+            "offset": {
+                "x": 20
+            }
+        }
+    },
+    {
+        "id": "user_z",
+        "type": "icon",
+        "icon_id": "generic-user",
+        "size": [
+            48,
+            48
+        ],
+        "layer": 2,
+        "placement": {
+            "type": "relative",
+            "target_id": "protected_z_section",
+            "target_anchor": "center_left",
+            "self_anchor": "center",
+            "offset": {
+                "x": 20
+            }
+        }
+    },
+    {
+        "id": "vnet_icon",
+        "type": "icon",
+        "icon_id": "azure-vnet",
+        "size": [
+            48,
+            48
+        ],
+        "layer": 2,
+        "placement": {
+            "type": "relative",
+            "target_id": "main_vnet",
+            "target_anchor": "bottom_right",
+            "self_anchor": "center",
+            "offset": {
+                "x": -20,
+                "y": 20
+            }
+        }
+    },
+    {
+        "id": "vnet_label_1",
+        "type": "text",
+        "text": "Virtual Network",
+        "placement": {
+            "type": "relative",
+            "target_id": "vnet_icon",
+            "target_anchor": "top",
+            "self_anchor": "bottom"
+        }
+    },
+    {
+        "id": "vnet_label_2",
+        "type": "text",
+        "text": "172.16.136.0/22",
+        "placement": {
+            "type": "relative",
+            "target_id": "vnet_icon",
+            "target_anchor": "bottom",
+            "self_anchor": "top"
+        }
+    },
+    {
+        "id": "text_dots",
+        "type": "text",
+        "text": "...",
+        "font_size": 24,
+        "placement": {
+            "type": "relative",
+            "target_id": "protected_z_section",
+            "target_anchor": "center_left",
+            "self_anchor": "center",
+            "offset": {
+                "x": 20,
+                "y": 20
+            }
+        }
+    },
+    {
+        "id": "ext_ip_range",
+        "type": "text",
+        "text": "172.16.136.0/26",
+        "placement": {
+            "type": "relative",
+            "target_id": "external_section",
+            "target_anchor": "bottom",
+            "self_anchor": "top",
+            "offset": {
+                "y": 10
+            }
+        }
+    },
+    {
+        "id": "int_ip_range",
+        "type": "text",
+        "text": "172.16.136.64/26",
+        "placement": {
+            "type": "relative",
+            "target_id": "internal_section",
+            "target_anchor": "bottom",
+            "self_anchor": "top",
+            "offset": {
+                "y": 10
+            }
+        }
+    }
+]

@@ -161,12 +161,27 @@ class ImageRenderer:
         return None
 
     def get_anchor_point(self, pos_xy, bbox, anchor_name):
-        x, y = pos_xy; w, h = bbox
-        if anchor_name in ['center', 'center_left', 'center_right']: y += h / 2
-        if anchor_name in ['bottom', 'bottom_left', 'bottom_center', 'bottom_right']: y += h
-        if anchor_name in ['center', 'top_center', 'bottom_center']: x += w / 2
-        if anchor_name in ['right', 'top_right', 'center_right', 'bottom_right']: x += w
-        return (x, y)
+        """Calculates the coordinates of a specific anchor point on an object."""
+        x, y = pos_xy
+        w, h = bbox
+
+        # Horizontal alignment
+        if 'left' in anchor_name:
+            x_coord = x
+        elif 'right' in anchor_name:
+            x_coord = x + w
+        else: # center, top, bottom
+            x_coord = x + w / 2
+
+        # Vertical alignment
+        if 'top' in anchor_name:
+            y_coord = y
+        elif 'bottom' in anchor_name:
+            y_coord = y + h
+        else: # center, left, right
+            y_coord = y + h / 2
+            
+        return (x_coord, y_coord)
 
     def get_edge_endpoints(self, edge):
         source_obj = self.get_object_by_id(edge.source_id)

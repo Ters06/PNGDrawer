@@ -9,6 +9,9 @@ The `canvas.json` file defines the global properties of your diagram's canvas. I
 -   **`background_color`** (string, optional): The background color of the canvas. Defaults to `"white"`.
 
 ### Example
+This example creates a canvas that is 1200 pixels wide and 800 pixels tall with a light grey background.
+
+**`definitions/my-diagram/canvas.json`**
 ```json
 {
   "width": 1200,

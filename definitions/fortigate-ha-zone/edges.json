@@ -1,0 +1,66 @@
+[
+    {
+        "source_id": "public_ip",
+        "target_id": "public_lb",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left"
+    },
+    {
+        "source_id": "public_lb",
+        "target_id": "fgt_1",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
+        "connection": {
+            "type": "curve",
+            "bend": -0.5
+        }
+    },
+    {
+        "source_id": "public_lb",
+        "target_id": "fgt_2",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
+        "connection": {
+            "type": "curve",
+            "bend": 0.5
+        }
+    },
+    {
+        "source_id": "fgt_1",
+        "target_id": "internal_lb",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
+        "connection": {
+            "type": "curve",
+            "bend": 0.5
+        }
+    },
+    {
+        "source_id": "fgt_2",
+        "target_id": "internal_lb",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
+        "connection": {
+            "type": "curve",
+            "bend": -0.5
+        }
+    },
+    {
+        "source_id": "internal_lb",
+        "target_id": "user_a",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left"
+    },
+    {
+        "source_id": "internal_lb",
+        "target_id": "user_b",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left"
+    },
+    {
+        "source_id": "internal_lb",
+        "target_id": "user_z",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left"
+    }
+]

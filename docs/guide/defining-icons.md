@@ -37,7 +37,7 @@ You would then use these IDs in your `nodes.json` file like this:
   "icon_id": "azure-vm", // <-- This ID maps to the path in icons.json
   "label": "Web Server 1",
   "size": [64, 64],
-  "placement": { "...": "..." }
+  "placement": { "type": "absolute", "x": 50, "y": 50 }
 }
 ```
 

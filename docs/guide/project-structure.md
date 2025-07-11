@@ -45,6 +45,8 @@ The project is designed to be highly modular, following the principle of **Separ
 -   **`definitions/`**: Contains only data (JSON files) that describe *what* to draw.
 -   **`drawer/`**: This Python package contains only logic that knows *how* to render the diagram.
 
+This separation ensures that content creators do not need to be programmers, and programmers do not need to worry about the specific content of the diagrams.
+
 ### 2. The Application Core (`drawer/`)
 
 -   **`config.py`**: Centralizes all directory path management.

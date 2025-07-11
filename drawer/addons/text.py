@@ -29,7 +29,7 @@ class Text(Base):
         self.draw.text(label_pos, text, fill="#000000", font=self.renderer.font, anchor=text_anchor)
 
     def _draw_edge_label(self, edge, text):
-        """Draws a rotated label along an edge."""
+        """Draws a rotated label with a background along an edge."""
         start_pos, end_pos = self.renderer.get_edge_endpoints(edge)
         if not start_pos or not end_pos: return
 
@@ -41,17 +41,33 @@ class Text(Base):
         angle = math.degrees(math.atan2(dy, dx))
         mid_point = ((start_pos[0] + end_pos[0]) / 2, (start_pos[1] + end_pos[1]) / 2)
 
+        # --- New: Smart text rotation ---
+        # If the angle is upside down (e.g., for right-to-left lines), flip it
+        if 90 < abs(angle) < 270:
+            angle -= 180
+
         # Create a temporary image for the text
         text_bbox = self.renderer.font.getbbox(text)
         text_width = text_bbox[2] - text_bbox[0]
         text_height = text_bbox[3] - text_bbox[1]
         
-        txt_img = Image.new('RGBA', (text_width, text_height), (255, 255, 255, 0))
+        # Add padding for the background
+        padding = 5 * self.scale_factor
+        bg_width = text_width + (2 * padding)
+        bg_height = text_height + (2 * padding)
+
+        txt_img = Image.new('RGBA', (bg_width, bg_height))
         txt_draw = ImageDraw.Draw(txt_img)
-        txt_draw.text((0, 0), text, font=self.renderer.font, fill=edge.color)
+
+        # --- New: Draw background rectangle ---
+        canvas_bg_color = self.renderer.canvas_config.get('background_color', 'white')
+        txt_draw.rectangle([0, 0, bg_width, bg_height], fill=canvas_bg_color)
+        
+        # Draw the text onto its temporary image
+        txt_draw.text((padding, padding), text, font=self.renderer.font, fill=edge.color)
 
         # Rotate the text image and paste it onto the main canvas
-        rotated_txt = txt_img.rotate(angle, expand=1)
+        rotated_txt = txt_img.rotate(angle, expand=1, resample=Image.BICUBIC)
         
         # Calculate paste position to center the rotated text on the midpoint
         paste_x = int(mid_point[0] - rotated_txt.width / 2)

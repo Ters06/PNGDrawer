@@ -1,7 +1,0 @@
-[
-    {
-        "source": "elb",
-        "target": "elb_text_note",
-        "directional": false
-    }
-]

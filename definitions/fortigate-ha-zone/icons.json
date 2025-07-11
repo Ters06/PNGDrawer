@@ -1,0 +1,7 @@
+{
+    "azure-public-ip": "azure/networking/10069-icon-service-Public-IP-Addresses.svg",
+    "azure-lb": "azure/networking/10062-icon-service-Load-Balancers.svg",
+    "fortinet-fw": "fortinet/FortiGate.svg",
+    "generic-user": "azure/identity/10230-icon-service-Users.svg",
+    "azure-vnet": "azure/networking/10061-icon-service-Virtual-Networks.svg"
+}

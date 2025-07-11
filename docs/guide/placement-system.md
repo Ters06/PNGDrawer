@@ -4,15 +4,16 @@ The `placement` object is a required property for every node in `nodes.json`. It
 
 ## Anchor Points
 
-The `relative` placement type uses anchor points to define alignment. An anchor is a specific point on an object's bounding box.
+The `relative` placement type and edge connections use anchor points to define alignment. An anchor is a specific point on an object's bounding box.
 
 The available anchor points are:
+-   `top`, `bottom`, `left`, `right` (aliases for the center-midpoints)
+-   `center`
 -   `top_left`, `top_center`, `top_right`
--   `center_left`, `center`, `center_right`
+-   `center_left`, `center_right`
 -   `bottom_left`, `bottom_center`, `bottom_right`
 
-Additionally, for connections, you can use the cardinal directions:
--   `top`, `bottom`, `left`, `right`
+![Anchor Points Guide](../images/anchor_points_guide.svg)
 
 ---
 
@@ -48,7 +49,7 @@ This is the most powerful placement type. It positions an object relative to ano
 
 ### Example
 
-This places the center of `my_node` at the `top_right` corner of `target_node`, then shifts it 10 pixels right and 10 pixels up.
+This places the `self_anchor` of the source object on the `target_anchor` of the target object, and then applies the offset.
 
 ```json
 "placement": {
@@ -56,7 +57,7 @@ This places the center of `my_node` at the `top_right` corner of `target_node`, 
   "target_id": "target_node",
   "target_anchor": "top_right",
   "self_anchor": "center",
-  "offset": { "x": 10, "y": -10 }
+  "offset": { "x": 100, "y": 50 }
 }
 ```
 ![Relative Placement Example](../images/placement_relative_example.svg)

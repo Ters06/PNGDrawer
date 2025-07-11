@@ -81,7 +81,12 @@
         "color": "#9B59B6",
         "label": "ExpressRoute Private Peering",
         "connection": {
-            "direction": "bidirectional"
+            "direction": "bidirectional",
+            "type": "s-curve",
+            "bend": [
+                -0.5,
+                0.5
+            ]
         }
     }
 ]

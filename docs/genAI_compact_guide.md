@@ -14,103 +14,77 @@ A complete diagram is defined by a set of files in a dedicated directory:
 
 ## 1. `canvas.json`
 
-A JSON object defining the canvas.
-
-- **`width`** (integer): The final image width in pixels.
-- **`height`** (integer): The final image height in pixels.
-- **`background_color`** (string, optional): Hex code or named color. Defaults to `white`.
-- **`border`** (object, optional): An object to define a border around the canvas.
-  - **`color`** (string): The border color.
-  - **`width`** (integer): The border width in pixels.
-  - **`type`** (string): `"solid"`, `"dashed"`, or `"dotted"`.
-
-**Example:**
-```json
-{
-  "width": 1200,
-  "height": 800,
-  "background_color": "#F0F4F8",
-  "border": {
-    "color": "#A9A9A9",
-    "width": 2,
-    "type": "dashed"
-  }
-}
-```
+- **`width`**, **`height`** (integer): The final image dimensions in pixels.
+- **`background_color`** (string, optional): Hex code (e.g., `"#FFFFFF"`) or a named color (e.g., `"white"`).
+- **`border`** (object, optional): Defines a border around the canvas.
+  - **`color`** (string), **`width`** (integer), **`type`** (string: `"solid"`, `"dashed"`, `"dotted"`).
 
 ---
 
 ## 2. `icons.json`
 
-A JSON object that maps a simple ID to an icon's file path. The path is relative to a root `icons/` directory. **You, the AI, must generate placeholder paths**, as you are not aware of the user's local file system.
-
-- **key** (string): A logical `icon_id` (e.g., "azure-vm").
-- **value** (string): A placeholder path (e.g., "path/to/your/vm.svg").
+A JSON object mapping a simple `icon_id` to a file path relative to the `icons/` directory. **You, the AI, must generate placeholder paths.**
 
 ---
 
 ## 3. `nodes.json`
 
-A JSON array of node objects. Each object represents a visual element.
+An array of node objects.
 
 ### Common Node Properties
 - **`id`** (string, required): A unique identifier.
-- **`type`** (string, required): `"icon"`, `"shape"`, or `"text"`.
-- **`layer`** (integer, optional): Stacking order. Higher numbers are on top. Defaults to `1`.
-- **`placement`** (object, required): Defines the object's position. See Placement System below.
+- **`type`** (string, required): Valid options are `"icon"`, `"shape"`, `"text"`.
+- **`layer`** (integer, optional): Stacking order.
+- **`placement`** (object, required): Defines the object's position.
+- **`label`** (string or object, optional): A text label. If an object, use `{ "text": "...", "position": "..." }`. Valid `position` options are `top`, `bottom`, `left`, `right`, `center`, and all four corners (e.g., `top_left`).
+
+### Node-Specific Properties
+- **For `icon`**: `icon_id` (string, required), `size` (array `[w,h]`, optional).
+- **For `shape`**: 
+  - `shape` (string, required): Valid options are `"rounded_rectangle"`.
+  - `size` (array `[w,h]`, required).
+  - `color` (string, required): Can be a hex code or `"none"` for a transparent fill.
+  - `radius` (integer, optional).
+  - `border` (object, optional): `{ "color": "...", "width": ..., "type": "..." }`. Valid `type` options are `"solid"`, `"dashed"`, `"dotted"`.
+- **For `text`**: `text` (string, required), `font_size` (integer, optional), `color` (string, optional).
 
 ---
 
 ## 4. Placement System (`placement` object)
 
-Defines an object's position.
+- **`type`** (string, required): Valid options are `"absolute"`, `"relative"`, `"boundary"`.
+- **For `absolute`**: `x`, `y` coordinates.
+- **For `relative`**: `target_id`, `target_anchor`, `self_anchor`, and optional `offset` (`{x, y}`).
+- **For `boundary`**: 
+  - `vertical` (string): `"top"`, `"center"`, `"bottom"`.
+  - `horizontal` (string): `"left"`, `"center"`, `"right"`.
 
-### Placement Type: `absolute`
-- **`type`**: `"absolute"`
-- **`x`**, **`y`** (integer): Coordinates from the top-left of the canvas.
-
-### Placement Type: `relative`
-- **`type`**: `"relative"`
-- **`target_id`** (string): The `id` of the object to position against.
-- **`target_anchor`** (string): Anchor point on the target object.
-- **`self_anchor`** (string): Anchor point on the current object to align with the target anchor.
-- **`offset`** (object, optional): `{ "x": integer, "y": integer }` pixel offset applied after alignment.
-
-**Valid Anchor Points**: `top_left`, `top_center`, `top_right`, `center_left`, `center`, `center_right`, `bottom_left`, `bottom_center`, `bottom_right`. For connections, `top`, `bottom`, `left`, `right` are also valid.
-
-### Placement Type: `boundary`
-- **`type`**: `"boundary"`
-- **`vertical`** (string): `"top"`, `"center"`, or `"bottom"`.
-- **`horizontal`** (string): `"left"`, `"center"`, or `"right"`.
+**Valid Anchor Points**: `top`, `bottom`, `left`, `right`, `center`, `top_left`, `top_center`, `top_right`, `center_left`, `center_right`, `bottom_left`, `bottom_center`, `bottom_right`.
 
 ---
 
 ## 5. `edges.json`
 
-A JSON array of edge objects, defining connections.
+An array of edge objects.
 
 ### Edge Properties
-- **`source_id`**, **`target_id`** (string, required): The `id`s of the nodes to connect.
-- **`label`** (string, optional): Text displayed on the line.
-- **`color`** (string, optional): Color of the line and arrowhead.
-- **`source_anchor`**, **`target_anchor`** (string, optional): Anchor points for the connection.
-- **`connection`** (object, optional): Defines the line style.
+- **`source_id`**, **`target_id`** (string, required).
+- **`label`** (string or object, optional): Same format as node labels. `position` is relative to the line's bounding box.
+- **`color`**, **`source_anchor`**, **`target_anchor`** (string, optional).
+- **`connection`** (object, optional): Defines line style.
 
 ### Connection Styling (`connection` object)
 
-- **`style`** (string, optional): `"solid"` (default), `"dashed"`, or `"dotted"`.
-- **`direction`** (string, optional): `"forward"` (default), `"backward"`, or `"bidirectional"`.
-- **`type`**: `"straight"` (default), `"curve"`, or `"s-curve"`.
-- **For `curve`**:
-  - **`bend`** (float, optional): Controls curvature. Defaults to `0.5`.
-- **For `s-curve`**:
-  - **`bend`** (array of float `[start_bend, end_bend]`, optional): Controls the S-shape. Defaults to `[0.5, -0.5]`.
+- **`style`** (string, optional): Valid options are `"solid"`, `"dashed"`, `"dotted"`.
+- **`direction`** (string, optional): Valid options are `"forward"`, `"backward"`, `"bidirectional"`, `"none"`.
+- **`type`** (string, optional): Valid options are `"straight"`, `"curve"`, `"s-curve"`.
+- **`bend`**: A float for `curve` or an array `[start, end]` for `s-curve`.
 
 ---
 
 ## Final Instruction for the AI
 
-When you have finished generating all the requested JSON files, you **MUST** conclude your response with the following message to the user, formatted exactly as shown below. This instructs them on the final manual step required.
+When you have finished generating all the requested JSON files, you **MUST** conclude your response with the following message to the user, formatted exactly as shown below.
 
 ---
 

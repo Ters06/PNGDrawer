@@ -86,7 +86,7 @@
             "target_anchor": "left",
             "self_anchor": "right",
             "offset": {
-                "x": -300
+                "x": -400
             }
         },
         "border": {
