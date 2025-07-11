@@ -33,7 +33,7 @@ Using a simple string for the `label` property places it in the default "bottom"
   "id": "web_server",
   "type": "icon",
   "icon_id": "azure-vm",
-  "label": "Web Server",
+  "label": "Production Server",
   "size": [64, 64],
   "placement": { "type": "absolute", "x": 100, "y": 100 }
 }
