@@ -67,11 +67,27 @@ Before you begin, ensure you have the following installed on your system (prefer
     python3 run.py my-first-diagram
     ```
 
-4.  **Check the Output**
-    If successful, you will see a confirmation message:
-    `✅ Image successfully rendered at: output/diagram.png`
+## Command-Line Options
 
-    You can now open the `diagram.png` file in the `output/` folder to see your rendered text.
+The application supports several command-line arguments to modify its behavior.
+
+### Help
+
+You can view all available commands and their descriptions by running the script with the `-h` or `--help` flag.
+
+```bash
+python3 run.py --help
+```
+
+### Debug Mode
+
+By default, the application only shows high-level informational messages. If you encounter an issue or want to see the detailed step-by-step process of how your diagram is being rendered, you can enable debug mode.
+
+Use the `-d` or `--debug` flag to see a verbose log of the entire process.
+
+```bash
+python3 run.py my-first-diagram --debug
+```
 
 ---
 **Next:** [Project Structure](./project-structure.md)\

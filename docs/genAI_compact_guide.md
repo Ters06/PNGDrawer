@@ -19,13 +19,22 @@ A JSON object defining the canvas.
 - **`width`** (integer): The final image width in pixels.
 - **`height`** (integer): The final image height in pixels.
 - **`background_color`** (string, optional): Hex code or named color. Defaults to `white`.
+- **`border`** (object, optional): An object to define a border around the canvas.
+  - **`color`** (string): The border color.
+  - **`width`** (integer): The border width in pixels.
+  - **`type`** (string): `"solid"`, `"dashed"`, or `"dotted"`.
 
 **Example:**
 ```json
 {
   "width": 1200,
   "height": 800,
-  "background_color": "#F0F4F8"
+  "background_color": "#F0F4F8",
+  "border": {
+    "color": "#A9A9A9",
+    "width": 2,
+    "type": "dashed"
+  }
 }
 ```
 
@@ -37,14 +46,6 @@ A JSON object that maps a simple ID to an icon's file path. The path is relative
 
 - **key** (string): A logical `icon_id` (e.g., "azure-vm").
 - **value** (string): A placeholder path (e.g., "path/to/your/vm.svg").
-
-**Example:**
-```json
-{
-  "azure-vm": "azure/compute/vm.svg",
-  "fortinet-fw": "fortinet/firewall.svg"
-}
-```
 
 ---
 
@@ -58,22 +59,6 @@ A JSON array of node objects. Each object represents a visual element.
 - **`layer`** (integer, optional): Stacking order. Higher numbers are on top. Defaults to `1`.
 - **`placement`** (object, required): Defines the object's position. See Placement System below.
 
-### Node Type: `icon`
-- **`icon_id`** (string, required): The ID from `icons.json`.
-- **`size`** (array of int `[width, height]`, optional): Resizes the icon.
-- **`label`** (string, optional): Text displayed below the icon.
-
-### Node Type: `shape`
-- **`shape`** (string, required): e.g., `"rounded_rectangle"`.
-- **`size`** (array of int `[width, height]`, required): Dimensions of the shape.
-- **`color`** (string, required): Fill color.
-- **`radius`** (integer, optional): Corner radius for rounded rectangles.
-
-### Node Type: `text`
-- **`text`** (string, required): The text to display.
-- **`font_size`** (integer, optional): Font size.
-- **`color`** (string, optional): Text color.
-
 ---
 
 ## 4. Placement System (`placement` object)
@@ -81,12 +66,10 @@ A JSON array of node objects. Each object represents a visual element.
 Defines an object's position.
 
 ### Placement Type: `absolute`
-Positions the top-left corner at exact coordinates.
 - **`type`**: `"absolute"`
 - **`x`**, **`y`** (integer): Coordinates from the top-left of the canvas.
 
 ### Placement Type: `relative`
-Positions an object relative to another.
 - **`type`**: `"relative"`
 - **`target_id`** (string): The `id` of the object to position against.
 - **`target_anchor`** (string): Anchor point on the target object.
@@ -96,7 +79,6 @@ Positions an object relative to another.
 **Valid Anchor Points**: `top_left`, `top_center`, `top_right`, `center_left`, `center`, `center_right`, `bottom_left`, `bottom_center`, `bottom_right`. For connections, `top`, `bottom`, `left`, `right` are also valid.
 
 ### Placement Type: `boundary`
-Positions an object relative to the canvas edges.
 - **`type`**: `"boundary"`
 - **`vertical`** (string): `"top"`, `"center"`, or `"bottom"`.
 - **`horizontal`** (string): `"left"`, `"center"`, or `"right"`.
@@ -116,9 +98,11 @@ A JSON array of edge objects, defining connections.
 
 ### Connection Styling (`connection` object)
 
+- **`style`** (string, optional): `"solid"` (default), `"dashed"`, or `"dotted"`.
+- **`direction`** (string, optional): `"forward"` (default), `"backward"`, or `"bidirectional"`.
 - **`type`**: `"straight"` (default), `"curve"`, or `"s-curve"`.
 - **For `curve`**:
-  - **`bend`** (float, optional): Controls curvature. Positive bends one way, negative bends the other. Defaults to `0.5`.
+  - **`bend`** (float, optional): Controls curvature. Defaults to `0.5`.
 - **For `s-curve`**:
   - **`bend`** (array of float `[start_bend, end_bend]`, optional): Controls the S-shape. Defaults to `[0.5, -0.5]`.
 
@@ -133,10 +117,3 @@ When you have finished generating all the requested JSON files, you **MUST** con
 **Action Required: Update Icon Paths**
 
 I have generated the diagram definitions for you. Your final step is to edit the `icons.json` file. I have created logical `icon_id`s, but you must replace the placeholder paths with the correct relative paths to the icon files in your local `icons/` directory.
-
-**Example `icons.json` to edit:**
-```json
-{
-  "web-server": "path/to/your/web-server.svg",
-  "database": "path/to/your/database.svg"
-}

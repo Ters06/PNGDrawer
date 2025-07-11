@@ -1,25 +1,29 @@
 # Guide: Nodes (`nodes.json`)
 
-The `nodes.json` file is where you define all the visual objects that will appear on your diagram. It is an array of node objects, each with a unique ID and a set of properties that describe its appearance and position.
+The `nodes.json` file is where you define all the visual objects that will appear on your diagram. It is an array of node objects.
 
 ## Common Node Properties
 
 All node types share these common properties:
 
--   **`id`** (string, required): A unique identifier for the node. This is used to reference the node in other files, such as `edges.json` and `layout.json`.
--   **`type`** (string, required): The type of object to draw. Can be `"icon"`, `"shape"`, or `"text"`.
--   **`layer`** (integer, optional): The drawing layer for the object. Objects with higher numbers are drawn on top of objects with lower numbers. Defaults to `1`.
--   **`placement`** (object, required): An object that defines how the node is positioned on the canvas. See the [Placement System](./placement-system.md) guide for full details.
+-   **`id`** (string, required): A unique identifier for the node.
+-   **`type`** (string, required): `"icon"`, `"shape"`, or `"text"`.
+-   **`layer`** (integer, optional): The drawing layer for the object. Higher numbers are drawn on top. Defaults to `1`.
+-   **`placement`** (object, required): An object that defines the node's position. See the [Placement System](./placement-system.md) guide for full details.
+-   **`label`** (string or object, optional): A text label for the node. This is a generic property available for both `icon` and `shape` types.
+    -   If a **string** is provided, the label is drawn at the default `bottom` position.
+    -   If an **object** is provided, you can specify the position:
+        -   **`text`** (string): The label text.
+        -   **`position`** (string): Can be `top`, `bottom`, `left`, `right`, `center`, `top_left`, `top_right`, `bottom_left`, `bottom_right`.
 
 ---
 
 ## Node Type: `icon`
 
-Used to place an SVG or PNG icon.
+Draws an SVG or PNG icon.
 
--   **`icon_id`** (string, required): The ID of the icon to use, as defined in your `icons.json` mapping file.
--   **`size`** (array of int, optional): An array `[width, height]` to resize the icon. If omitted, the icon's native size is used.
--   **`label`** (string, optional): Text that will be drawn directly below the icon.
+-   **`icon_id`** (string, required): The ID of the icon from `icons.json`.
+-   **`size`** (array of int, optional): `[width, height]` to resize the icon.
 
 ### Example
 ```json
@@ -27,62 +31,59 @@ Used to place an SVG or PNG icon.
   "id": "prod_server",
   "type": "icon",
   "icon_id": "azure-vm",
-  "label": "Production Server",
+  "label": {
+    "text": "Production Server",
+    "position": "right"
+  },
   "size": [64, 64],
-  "layer": 2,
   "placement": { "type": "absolute", "x": 100, "y": 100 }
 }
 ```
-![Icon Node Example](../images/icon_node_example.svg)
+![Label Positioning Example](../images/label_position_example.svg)
 
 ---
 
 ## Node Type: `shape`
 
-Used to draw simple geometric shapes.
+Draws simple geometric shapes.
 
--   **`shape`** (string, required): The type of shape to draw. Currently supports `"rounded_rectangle"`.
--   **`size`** (array of int, required): An array `[width, height]` that defines the dimensions of the shape.
--   **`color`** (string, required): The fill color for the shape (e.g., `"#E0EAF1"`).
--   **`radius`** (integer, optional): For a `rounded_rectangle`, this defines the corner radius. Defaults to `15`.
+-   **`shape`** (string, required): Currently supports `"rounded_rectangle"`.
+-   **`size`** (array of int, required): `[width, height]` for the shape's dimensions.
+-   **`color`** (string, required): The fill color.
+-   **`radius`** (integer, optional): Corner radius for `rounded_rectangle`.
+-   **`border`** (object, optional): Defines a custom border for the shape.
+    -   **`color`** (string): The border color.
+    -   **`width`** (integer): The border width in pixels.
+    -   **`type`** (string): The border style. Can be `"solid"`, `"dashed"`, or `"dotted"`.
 
 ### Example
 ```json
 {
-  "id": "background_box",
+  "id": "vnet_background",
   "type": "shape",
   "shape": "rounded_rectangle",
-  "size": [800, 500],
-  "color": "#F2F2F2",
-  "layer": 0,
+  "label": { "text": "VNet-01", "position": "top_left" },
+  "size": [400, 300],
+  "color": "#F0F4F8",
+  "border": {
+    "color": "#0078D4",
+    "width": 2,
+    "type": "dashed"
+  },
   "placement": { "type": "absolute", "x": 50, "y": 50 }
 }
 ```
-![Shape Node Example](../images/shape_node_example.svg)
+![Shape with Border Example](../images/shape_border_example.svg)
 
 ---
 
 ## Node Type: `text`
 
-Used to draw standalone text.
+Draws standalone text.
 
 -   **`text`** (string, required): The text content to display.
--   **`font_size`** (integer, optional): The font size. Defaults to `15`.
--   **`color`** (string, optional): The color of the text. Defaults to `"#000000"` (black).
-
-### Example
-```json
-{
-  "id": "diagram_title",
-  "type": "text",
-  "text": "Corporate Network Architecture",
-  "font_size": 24,
-  "color": "#333333",
-  "layer": 3,
-  "placement": { "type": "absolute", "x": 20, "y": 20 }
-}
-```
-![Text Node Example](../images/text_node_example.svg)
+-   **`font_size`** (integer, optional): The font size.
+-   **`color`** (string, optional): The color of the text.
 
 ---
 **Next:** [Icons (`icons.json`)](./defining-icons.md)\

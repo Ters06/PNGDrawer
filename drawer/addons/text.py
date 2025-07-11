@@ -1,32 +1,72 @@
 # drawer/addons/text.py
-from PIL import ImageDraw
+import math
+from PIL import Image, ImageDraw
 from .base import Base
+from ..models.node import TextObject
 
 class Text(Base):
-    """Draws all text elements, including labels for icons and edges."""
+    """Draws all text elements, including labels for nodes and edges."""
     def run(self):
-        # Draw labels for icons
-        icon_nodes = [n for n in self.config.get('nodes', []) if n.get('type') == 'icon' and 'label' in n]
-        for node in icon_nodes:
-            pos = self.renderer.final_positions.get(node['id'])
-            bbox = self.renderer.object_bboxes.get(node['id'])
-            if not pos or not bbox: continue
-            
-            label_pos = (pos[0] + bbox[0] / 2, pos[1] + bbox[1] + (5 * self.scale_factor))
-            self.draw.text(label_pos, node['label'], fill="#000000", font=self.renderer.font, anchor="mt")
-            
-        # Draw standalone text nodes
-        text_nodes = [n for n in self.config.get('nodes', []) if n.get('type') == 'text']
-        for node in text_nodes:
-            pos = self.renderer.final_positions.get(node['id'])
-            if not pos: continue
-            self.draw.text(pos, node.get('text'), fill=node.get('color', 'black'), font=self.renderer.font)
+        # Draw labels for all drawable objects (nodes and edges)
+        for obj in self.renderer.drawable_objects:
+            label_text, label_pos_name = obj.get_label_text_and_position()
+            if not label_text: continue
 
-        # Draw labels for edges
-        for edge in self.config.get('edges', []):
-            if 'label' in edge:
-                start_pos, end_pos = self.renderer.get_edge_endpoints(edge)
-                if not start_pos or not end_pos: continue
-                
-                mid_point = ((start_pos[0] + end_pos[0]) / 2, (start_pos[1] + end_pos[1]) / 2 - (10 * self.scale_factor))
-                self.draw.text(mid_point, edge['label'], fill=edge.get('color', 'black'), font=self.renderer.font, anchor="ms")
+            if obj.__class__.__name__ == 'EdgeObject':
+                self._draw_edge_label(obj, label_text)
+            else: # For NodeObjects
+                self._draw_node_label(obj, label_text, label_pos_name)
+        
+        # Draw standalone text nodes
+        for node in self.renderer.nodes:
+            if isinstance(node, TextObject):
+                self.draw.text(node.position, node.text, fill=node.color, font=self.renderer.font)
+
+    def _draw_node_label(self, node, text, position):
+        """Draws a label for a given node (icon or shape)."""
+        self.logger.debug(f"Drawing label for node '{node.id}' at position '{position}'")
+        label_pos, text_anchor = self._get_label_position_and_anchor(node.position, node.bbox, position)
+        self.draw.text(label_pos, text, fill="#000000", font=self.renderer.font, anchor=text_anchor)
+
+    def _draw_edge_label(self, edge, text):
+        """Draws a rotated label along an edge."""
+        start_pos, end_pos = self.renderer.get_edge_endpoints(edge)
+        if not start_pos or not end_pos: return
+
+        self.logger.debug(f"Drawing label for edge '{edge.id}'")
+
+        # Calculate angle and midpoint of the edge
+        dx = end_pos[0] - start_pos[0]
+        dy = end_pos[1] - start_pos[1]
+        angle = math.degrees(math.atan2(dy, dx))
+        mid_point = ((start_pos[0] + end_pos[0]) / 2, (start_pos[1] + end_pos[1]) / 2)
+
+        # Create a temporary image for the text
+        text_bbox = self.renderer.font.getbbox(text)
+        text_width = text_bbox[2] - text_bbox[0]
+        text_height = text_bbox[3] - text_bbox[1]
+        
+        txt_img = Image.new('RGBA', (text_width, text_height), (255, 255, 255, 0))
+        txt_draw = ImageDraw.Draw(txt_img)
+        txt_draw.text((0, 0), text, font=self.renderer.font, fill=edge.color)
+
+        # Rotate the text image and paste it onto the main canvas
+        rotated_txt = txt_img.rotate(angle, expand=1)
+        
+        # Calculate paste position to center the rotated text on the midpoint
+        paste_x = int(mid_point[0] - rotated_txt.width / 2)
+        paste_y = int(mid_point[1] - rotated_txt.height / 2)
+        
+        self.image.paste(rotated_txt, (paste_x, paste_y), rotated_txt)
+
+    def _get_label_position_and_anchor(self, obj_pos, obj_bbox, label_pos_name):
+        x, y = obj_pos; w, h = obj_bbox
+        offset = 5 * self.scale_factor
+        pos_map = {
+            'top': ((x + w / 2, y - offset), "mb"), 'bottom': ((x + w / 2, y + h + offset), "mt"),
+            'left': ((x - offset, y + h / 2), "rm"), 'right': ((x + w + offset, y + h / 2), "lm"),
+            'center': ((x + w / 2, y + h / 2), "mm"), 'top_left': ((x, y), "lb"),
+            'top_right': ((x + w, y), "rb"), 'bottom_left': ((x, y + h), "lt"),
+            'bottom_right': ((x + w, y + h), "rt")
+        }
+        return pos_map.get(label_pos_name, pos_map['bottom'])

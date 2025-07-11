@@ -2,62 +2,55 @@
 
 You can control the style of the lines drawn between objects by adding an optional `connection` object to any edge definition in `edges.json`.
 
-## Straight Lines (Default)
+## Line Style
 
-If the `connection` object is omitted, a straight line will be drawn between the specified anchor points of the source and target nodes.
+-   **`style`** (string, optional): The style of the line.
+    -   `"solid"`: (Default) A solid line.
+    -   `"dashed"`: A dashed line.
+    -   `"dotted"`: A dotted line.
 
 ### Example
 ```json
-// This will be a straight line
-{
-  "source_id": "node_a",
-  "target_id": "node_b"
+"connection": {
+  "style": "dashed"
 }
 ```
-![Straight Connection Example](../images/connection_straight_example.svg)
+![Dashed Connection Example](../images/connection_dashed_example.svg)
 
 ---
 
-## Curved Lines
+## Line Shape
 
-To create a simple, single-bend curve, use the `curve` type.
+-   **`type`** (string, optional): `"straight"` (default), `"curve"`, or `"s-curve"`.
 
+### Curved Lines
 -   **`type`**: `"curve"`
--   **`bend`** (float, optional): A number that controls the direction and amount of curvature.
-    -   Positive values (e.g., `0.5`) bend the line one way.
-    -   Negative values (e.g., `-0.5`) bend it the other way.
-    -   Defaults to `0.5`.
+-   **`bend`** (float, optional): Controls curvature. Positive values bend one way, negative values bend the other. Defaults to `0.5`.
 
-### Example
-```json
-"connection": {
-  "type": "curve",
-  "bend": -0.7
-}
-```
+### S-Curved Lines
+-   **`type`**: `"s-curve"`
+-   **`bend`** (array of float `[start_bend, end_bend]`, optional): Controls the S-shape. Defaults to `[0.5, -0.5]`.
+
 ![Curved Connection Example](../images/connection_curve_example.svg)
+![S-Curved Connection Example](../images/connection_scurve_example.svg)
 
 ---
 
-## S-Curved Lines
+## Arrow Direction
 
-To create a more complex S-shaped line (a cubic Bézier curve), use the `s-curve` type. This is useful for navigating around other objects.
-
--   **`type`**: `"s-curve"`
--   **`bend`** (array of float, optional): An array of two numbers, `[start_bend, end_bend]`, that control the curvature at the start and end of the line, respectively. This allows you to fine-tune the "S" shape.
-    -   Defaults to `[0.5, -0.5]`.
+-   **`direction`** (string, optional): Controls the arrowheads.
+    -   `"forward"`: (Default) Draws an arrow from source to target.
+    -   `"backward"`: Draws an arrow from target to source.
+    -   `"bidirectional"`: Draws arrows on both ends.
+    -   `"none"`: Draws a line with no arrowheads.
 
 ### Example
-
-This creates an S-curve that bends one way near the source and the opposite way near the target.
-
 ```json
 "connection": {
-  "type": "s-curve",
-  "bend": [0.6, -0.6]
+  "direction": "bidirectional"
 }
 ```
-![S-Curved Connection Example](../images/connection_scurve_example.svg)
+![Bidirectional Connection Example](../images/connection_bidirectional_example.svg)
 
 ---
 **Back to index:** [Index](./index.md)

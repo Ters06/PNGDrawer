@@ -2,54 +2,86 @@
     {
         "source_id": "web_vm",
         "target_id": "ilb",
-        "label": "TCP 80"
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
+        "connection": {
+            "type": "curve",
+            "bend": -0.7
+        }
     },
     {
         "source_id": "ilb",
         "target_id": "fgt_a",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
         "connection": {
-            "type": "s-curve",
-            "bend": [
-                0.4,
-                -0.3
-            ]
+            "style": "dotted"
         }
     },
     {
         "source_id": "ilb",
         "target_id": "fgt_b",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
         "connection": {
-            "type": "s-curve",
-            "bend": [
-                -0.4,
-                0.3
-            ]
+            "style": "dotted"
         }
     },
     {
         "source_id": "fgt_a",
         "target_id": "elb",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
         "connection": {
-            "type": "s-curve",
-            "bend": [
-                -0.4,
-                0.3
-            ]
+            "style": "dotted"
         }
     },
     {
         "source_id": "fgt_b",
         "target_id": "elb",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
         "connection": {
-            "type": "s-curve",
-            "bend": [
-                0.4,
-                -0.3
-            ]
+            "style": "dotted"
         }
     },
     {
         "source_id": "elb",
-        "target_id": "internet"
+        "target_id": "internet",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left"
+    },
+    {
+        "source_id": "spoke_vnet_bg",
+        "target_id": "hub_vnet_bg",
+        "source_anchor": "center_right",
+        "target_anchor": "center_left",
+        "color": "#0078D4",
+        "label": "peering",
+        "connection": {
+            "direction": "none"
+        }
+    },
+    {
+        "source_id": "pri_sipr_vnet_bg",
+        "target_id": "hub_vnet_bg",
+        "source_anchor": "top_center",
+        "target_anchor": "bottom_center",
+        "color": "#0078D4",
+        "label": "peering",
+        "connection": {
+            "direction": "none"
+        }
+    },
+    {
+        "source_id": "expressroute_gw",
+        "target_id": "onprem_bg",
+        "source_anchor": "center_left",
+        "target_anchor": "center_right",
+        "color": "#9B59B6",
+        "label": "ExpressRoute Private Peering",
+        "connection": {
+            "direction": "bidirectional"
+        }
     }
 ]
