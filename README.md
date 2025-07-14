@@ -61,3 +61,23 @@ To accelerate the creation of diagram definitions, you can use a generative AI. 
 ## Documentation
 
 For a complete explanation of all features, file formats, and advanced usage, please refer to the **[Full User Guide](docs/guide/index.md)**.
+
+---
+
+## Project Roadmap & Feature Backlog
+
+This project uses a structured backlog to manage and prioritize the development of new features for the `PNGDrawer` application. This approach ensures that development is transparent and focuses on the most impactful improvements for users.
+
+Our backlog is organized into two main types of documents:
+
+1. **The Main Backlog Page:** This is the central hub for all proposed features. It provides a high-level overview of each item, its priority, status, and the larger epic it belongs to.
+   * [View the Main Feature Backlog](./docs/backlog/backlog.md)
+
+2. **Detailed Specification Pages:** Each item in the main backlog links to a detailed "spec" page. These pages provide in-depth information about a specific feature, including:
+   * A clear **Problem Statement** explaining the "why" behind the feature.
+   * A **Proposed Solution** detailing the "what" and "how".
+   * **Technical Details** for implementation.
+   * **Acceptance Criteria** to define what "done" looks like.
+   * [Browse all Feature Specifications](./docs/backlog/specs/)
+
+This system allows anyone to understand the current state of the project, the direction it's heading, and the detailed thinking behind each proposed change.
