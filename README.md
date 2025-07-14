@@ -37,24 +37,42 @@ The rendering engine is built with Python and the Pillow library, using an addon
 
 ## Using with Generative AI
 
-To accelerate the creation of diagram definitions, you can use a generative AI. A compact guide detailing the application's JSON schema is provided in the `docs/` folder.
+To accelerate the creation of diagram definitions, you can use a generative AI. A comprehensive, self-contained onboarding guide is provided to enable the AI to understand the system's schema, rules, and common patterns.
 
-**File**: `docs/genAI_compact_guide.md`
+**File**: `docs/genAI_onboarding_guide.md`
+
+### How it Works
+
+The provided guide acts as a "cheat sheet" for the AI, containing:
+- The complete JSON schema for all file types.
+- A cookbook of pre-built recipes for common visual patterns (like iteration loops and corner tags).
+- A list of critical rendering limitations (like the need for manual text wrapping).
 
 ### How to Use
 
-1.  **Copy the Guide**: Open the `genAI_compact_guide.md` file and copy its entire content.
-2.  **Provide Context to the AI**: Paste the copied guide as a preamble or system prompt to your chosen generative AI. This teaches the AI the rules of the system.
-3.  **Make Your Request**: After providing the context, make a clear request for the diagram you want. The AI will generate all the necessary JSON files.
+1.  **Copy the Guide**: Open `docs/genAI_onboarding_guide.md` and copy its entire content.
+2.  **Provide Context to the AI**: Paste the guide as a system prompt to your chosen generative AI. This gives it the necessary context.
+3.  **Make Your Request**:
+    * For **structural diagrams**, a simple prompt is often enough (e.g., "a user connected to a server"). The AI will use the built-in recipes.
+    * For **visually specific diagrams**, provide more detail. The AI understands the structure but needs your input for exact sizes, colors, and spacing to perfectly replicate a visual style.
 4.  **Manual Step: Update Icon Paths**: The AI will generate an `icons.json` file with logical `icon_id`s but will use **placeholder paths**. You must **manually edit `icons.json`** and replace these placeholders with the correct relative paths to the icon files you have placed in your `icons/` directory.
 
-### Example Prompt
+### Example Prompts
 
-> (Paste the entire content of genAI_compact_guide.md here)
+**Simple Prompt (for structure):**
+> (Paste the entire content of genAI_onboarding_guide.md here)
 >
 > ---
 >
 > Now, acting as an expert in this system, please generate the complete set of JSON files for a simple diagram showing a user icon connecting to a web server, which then connects to a database.
+
+**Detailed Prompt (for visual precision):**
+> (Paste the entire content of genAI_onboarding_guide.md here)
+>
+> ---
+>
+> Now, acting as an expert in this system, generate the JSON files for a diagram. Use a main column that is 400px wide. Inside it, place a header box that is 350px wide with the hex color `#0D6EFD` and white text. Below that, add a content box that is 350px wide and 150px tall.
+
 
 ---
 

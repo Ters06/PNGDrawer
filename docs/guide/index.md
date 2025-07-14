@@ -21,3 +21,8 @@ Welcome to the complete user guide for the Declarative Diagram Renderer. This gu
 
 ### 4. Connection Styling
 - [Straight, Curved, and S-Curved Lines](./connection-styles.md)
+
+### Practical Guides & References
+
+* **[Cookbook & Recipes](./cookbook.md)**: Practical, copy-pasteable solutions for common diagramming patterns.
+* **[Known Limitations](./limitations.md)**: A reference for current limitations and best-practice workarounds.
