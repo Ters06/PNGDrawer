@@ -20,6 +20,7 @@ class ImageRenderer:
 
     def __init__(self, config: dict):
         self.config = config
+        self.main_config = config.get('main', {})
         self.canvas_config = config.get('canvas', {})
         self.icons_map = config.get('icons', {})
         self.scale_factor = 4
@@ -30,9 +31,11 @@ class ImageRenderer:
         self.drawable_objects = self.nodes + self.edges
         
         try:
+            # Use the new default_font_size from main.json, fallback to 15
+            default_font_size = self.main_config.get('default_font_size', 15)
             font_path_bytes = subprocess.check_output(["fc-match", "--format=%{file}", "dejavusans"])
             font_path = font_path_bytes.decode().strip()
-            self.font = ImageFont.truetype(font_path, 15 * self.scale_factor)
+            self.font = ImageFont.truetype(font_path, default_font_size * self.scale_factor)
             self.logger.info(f"Successfully loaded font: {font_path}")
         except (subprocess.CalledProcessError, FileNotFoundError):
             self.logger.warning("Could not find font 'dejavusans' via fc-match. Falling back to default.")
@@ -78,7 +81,7 @@ class ImageRenderer:
         self.logger.info("Step 4: Downscaling final image for anti-aliasing...")
         self.image = self.image.resize((final_width, final_height), Image.Resampling.LANCZOS)
 
-        output_filename = self.config.get('main', {}).get('output_filename', 'diagram')
+        output_filename = self.main_config.get('output_filename', 'diagram')
         png_filename = Path(output_filename).with_suffix('.png')
         output_filepath = OUTPUT_DIR / png_filename
         

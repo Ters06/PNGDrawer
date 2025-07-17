@@ -6,6 +6,7 @@ class NodeObject(DrawableObject):
     def __init__(self, config):
         super().__init__(config)
         self.type = config.get('type')
+        self.label = config.get('label')
 
 class IconObject(NodeObject):
     def __init__(self, config):

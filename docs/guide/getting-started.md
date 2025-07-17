@@ -90,5 +90,5 @@ python3 run.py my-first-diagram --debug
 ```
 
 ---
-**Next:** [Project Structure](./project-structure.md)\
+**Next:** [Cookbook](./cookbook.md)\
 **Back to index:** [Index](./index.md)

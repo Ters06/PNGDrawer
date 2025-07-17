@@ -31,5 +31,5 @@ The renderer automatically loads and combines all `.json` files found within a d
 This segmented approach allows you to manage complex diagrams easily by keeping related definitions separate and focused.
 
 ---
-**Next:** [The Canvas (`canvas.json`)](./defining-canvas.md)\
+**Next:** [Placement System](./placement-system.md)\
 **Back to index:** [Index](./index.md)

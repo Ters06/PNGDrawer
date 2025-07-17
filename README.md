@@ -10,14 +10,15 @@ The rendering engine is built with Python and the Pillow library, using an addon
 
 ## Features
 
-- **Declarative JSON Definitions**: Describe every aspect of your diagram—from canvas size to object placement—in simple JSON files.
-- **Precise Layout Engine**: Position objects absolutely, relative to the canvas boundaries, or relative to each other using a powerful anchor and offset system.
-- **Generic Properties**: Define labels and borders on any object type that supports them (icons, shapes, edges).
-- **Layering**: Control the stacking order of objects to create complex, overlapping designs.
-- **High-Quality Rendering**: Uses a 4x supersampling technique to produce smooth, anti-aliased lines and crisp text.
-- **Vector Icon Support**: Directly uses SVG icons for scalable, high-quality graphics. **Note:** You must provide your own icon files.
-- **Flexible Connections**: Draw straight, curved, or S-shaped lines with solid, dashed, or dotted styles, and control arrow direction.
-- **Modular Addon Architecture**: The core rendering engine is built on a plugin-like system, making it easy to add new features.
+-   **Declarative JSON Definitions**: Describe every aspect of your diagram—from canvas size to object placement—in simple JSON files.
+-   **Precise Layout Engine**: Position objects absolutely, or relative to each other using a powerful anchor and offset system.
+-   **Rich Text Styling**: Control font size, weight (bold), style (italic), color, and alignment on a per-label basis.
+-   **Automatic Text Wrapping**: Long text labels automatically wrap to fit within their parent nodes.
+-   **Layering**: Control the stacking order of objects to create complex, overlapping designs.
+-   **High-Quality Rendering**: Uses a 4x supersampling technique to produce smooth, anti-aliased lines and crisp text.
+-   **Vector Icon Support**: Directly uses SVG icons for scalable, high-quality graphics. **Note:** You must provide your own icon files.
+-   **Flexible Connections**: Draw straight, curved, or S-shaped lines with solid, dashed, or dotted styles.
+-   **Modular Addon Architecture**: The core rendering engine is built on a plugin-like system, making it easy to add new features.
 
 ---
 
@@ -44,9 +45,9 @@ To accelerate the creation of diagram definitions, you can use a generative AI. 
 ### How it Works
 
 The provided guide acts as a "cheat sheet" for the AI, containing:
-- The complete JSON schema for all file types.
-- A cookbook of pre-built recipes for common visual patterns (like iteration loops and corner tags).
-- A list of critical rendering limitations (like the need for manual text wrapping).
+-   The complete JSON schema for all file types.
+-   A cookbook of pre-built recipes for common visual patterns (like iteration loops and corner tags).
+-   A list of critical rendering limitations.
 
 ### How to Use
 
@@ -71,7 +72,7 @@ The provided guide acts as a "cheat sheet" for the AI, containing:
 >
 > ---
 >
-> Now, acting as an expert in this system, generate the JSON files for a diagram. Use a main column that is 400px wide. Inside it, place a header box that is 350px wide with the hex color `#0D6EFD` and white text. Below that, add a content box that is 350px wide and 150px tall.
+> Now, acting as an expert in this system, generate the JSON files for a diagram. Use a main column that is 400px wide. Inside it, place a header box that is 350px wide with the hex color `#0D6EFD` and white, bold text. Below that, add a content box that is 350px wide and 150px tall with left-aligned text.
 
 
 ---
@@ -88,14 +89,14 @@ This project uses a structured backlog to manage and prioritize the development 
 
 Our backlog is organized into two main types of documents:
 
-1. **The Main Backlog Page:** This is the central hub for all proposed features. It provides a high-level overview of each item, its priority, status, and the larger epic it belongs to.
-   * [View the Main Feature Backlog](./docs/backlog/backlog.md)
+1.  **The Main Backlog Page:** This is the central hub for all proposed features. It provides a high-level overview of each item, its priority, status, and the larger epic it belongs to.
+    * [View the Main Feature Backlog](./docs/backlog/backlog.md)
 
-2. **Detailed Specification Pages:** Each item in the main backlog links to a detailed "spec" page. These pages provide in-depth information about a specific feature, including:
-   * A clear **Problem Statement** explaining the "why" behind the feature.
-   * A **Proposed Solution** detailing the "what" and "how".
-   * **Technical Details** for implementation.
-   * **Acceptance Criteria** to define what "done" looks like.
-   * [Browse all Feature Specifications](./docs/backlog/specs/)
+2.  **Detailed Specification Pages:** Each item in the main backlog links to a detailed "spec" page. These pages provide in-depth information about a specific feature, including:
+    * A clear **Problem Statement** explaining the "why" behind the feature.
+    * A **Proposed Solution** detailing the "what" and "how".
+    * **Technical Details** for implementation.
+    * **Acceptance Criteria** to define what "done" looks like.
+    * [Browse all Feature Specifications](./docs/backlog/specs/)
 
 This system allows anyone to understand the current state of the project, the direction it's heading, and the detailed thinking behind each proposed change.

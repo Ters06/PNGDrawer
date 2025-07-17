@@ -1,28 +1,28 @@
-# Declarative Diagram Renderer - User Guide
+# User Guide
 
-Welcome to the complete user guide for the Declarative Diagram Renderer. This guide provides an exhaustive reference for all features and configuration options available in the application.
+Welcome to the diagram generator guide.
+
+This guide is designed to help you understand how to define and generate complex diagrams using a "diagram as code" approach.
 
 ## Table of Contents
 
-### 1. Core Concepts
-- [Getting Started](./getting-started.md)
-- [Project Structure](./project-structure.md)
-- [The Definition System](./definition-system.md)
+- **Fundamental Concepts**
+  - [Project Structure](./project-structure.md)
+  - [Definition System](./definition-system.md)
+  - [Placement System](./placement-system.md)
+  - [Layering System](./layering.md)
 
-### 2. Defining Diagram Objects
-- [The Canvas (`canvas.json`)](./defining-canvas.md)
-- [Nodes (`nodes.json`)](./defining-nodes.md)
-- [Icons (`icons.json`)](./defining-icons.md)
-- [Connections (`edges.json`)](./defining-edges.md)
+- **Component Definition**
+  - [Main File (`main.json`)](./defining-main.md)
+  - [Canvas (`canvas.json`)](./defining-canvas.md)
+  - [Nodes (`nodes.json`)](./defining-nodes.md)
+  - [Icons (`icons.json`)](./defining-icons.md)
+  - [Connections (`edges.json`)](./defining-edges.md)
+  - [Connection Styles](./connection-styles.md)
 
-### 3. Layout and Positioning
-- [The Placement System](./placement-system.md)
-- [Layering Objects](./layering.md)
+- **Practical Guides**
+  - [Getting Started](./getting-started.md)
+  - [Cookbook](./cookbook.md)
 
-### 4. Connection Styling
-- [Straight, Curved, and S-Curved Lines](./connection-styles.md)
-
-### Practical Guides & References
-
-* **[Cookbook & Recipes](./cookbook.md)**: Practical, copy-pasteable solutions for common diagramming patterns.
-* **[Known Limitations](./limitations.md)**: A reference for current limitations and best-practice workarounds.
+- **Appendix**
+  - [Known Limitations](./limitations.md)

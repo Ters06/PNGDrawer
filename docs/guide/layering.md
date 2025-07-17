@@ -75,5 +75,5 @@ In this example, we create a background, place an icon on top, then add a status
 ![Layering Example](../images/layering_example.svg)
 
 ---
-**Next:** [Connection Styles](./connection-styles.md)\
+**Next:** [Main File (`main.json`)](./defining-main.md)\
 **Back to index:** [Index](./index.md)

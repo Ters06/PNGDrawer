@@ -14,3 +14,4 @@ class EdgeObject(DrawableObject):
         self.source_anchor = config.get('source_anchor', 'right')
         self.target_anchor = config.get('target_anchor', 'left')
         self.connection_config = config.get('connection', {})
+        self.label = config.get('label')
