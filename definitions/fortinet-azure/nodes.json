@@ -194,7 +194,7 @@
         "type": "icon",
         "icon_id": "azure-vnet",
         "label": {
-            "text": "Hub VNet",
+            "text": "vnet-prd-hub-001",
             "position": "right"
         },
         "size": [
@@ -324,10 +324,31 @@
         }
     },
     {
-        "id": "expressroute_gw",
+        "id": "route_table_icon_VPN",
         "type": "icon",
-        "icon_id": "azure-expressroute",
-        "label": "ExpressRoute Gateway",
+        "icon_id": "azure-route-table",
+        "label": "Route Table",
+        "size": [
+            48,
+            48
+        ],
+        "layer": 2,
+        "placement": {
+            "type": "relative",
+            "target_id": "gateway_subnet",
+            "target_anchor": "bottom_right",
+            "self_anchor": "center",
+            "offset": {
+                "x": -15,
+                "y": -15
+            }
+        }
+    },
+    {
+        "id": "VPN_gw",
+        "type": "icon",
+        "icon_id": "azure-vpn",
+        "label": "VPN Gateway",
         "size": [
             64,
             64
@@ -361,7 +382,7 @@
         "id": "fgt_a",
         "type": "icon",
         "icon_id": "fortinet-fw",
-        "label": "FortiGate A",
+        "label": "vm-prd-fgt-1",
         "size": [
             80,
             80
@@ -381,7 +402,7 @@
         "id": "fgt_b",
         "type": "icon",
         "icon_id": "fortinet-fw",
-        "label": "FortiGate B",
+        "label": "vm-prd-fgt-2",
         "size": [
             80,
             80
@@ -401,7 +422,7 @@
         "id": "ilb",
         "type": "icon",
         "icon_id": "azure-lb",
-        "label": "Internal LB",
+        "label": "ilb-prd-hub-001",
         "size": [
             64,
             64
@@ -418,7 +439,7 @@
         "id": "elb",
         "type": "icon",
         "icon_id": "azure-lb",
-        "label": "External LB",
+        "label": "elb-prd-hub-001",
         "size": [
             64,
             64

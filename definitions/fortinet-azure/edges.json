@@ -74,12 +74,12 @@
         }
     },
     {
-        "source_id": "expressroute_gw",
+        "source_id": "VPN_gw",
         "target_id": "onprem_bg",
         "source_anchor": "center_left",
         "target_anchor": "center_right",
         "color": "#9B59B6",
-        "label": "ExpressRoute Private Peering",
+        "label": "IPsec tunnel",
         "connection": {
             "direction": "bidirectional",
             "type": "s-curve",
