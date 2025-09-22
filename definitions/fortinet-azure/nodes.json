@@ -1,491 +1,422 @@
 [
-    {
-        "id": "hub_vnet_bg",
-        "type": "shape",
-        "shape": "rounded_rectangle",
-        "color": "#F2F2F2",
-        "size": [
-            850,
-            500
-        ],
-        "layer": 0,
-        "placement": {
-            "type": "absolute",
-            "x": 500,
-            "y": 30
-        },
-        "border": {
-            "type": "solid",
-            "color": "#808080",
-            "width": 2
-        }
+  {
+    "id": "hub_vnet_bg",
+    "type": "shape",
+    "shape": "rounded_rectangle",
+    "color": "#F2F2F2",
+    "size": [850, 500],
+    "layer": 0,
+    "placement": {
+      "type": "absolute",
+      "x": 500,
+      "y": 30
     },
-    {
-        "id": "spoke_vnet_bg",
-        "type": "shape",
-        "shape": "rounded_rectangle",
-        "color": "#F2F2F2",
-        "size": [
-            300,
-            300
-        ],
-        "layer": 0,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_vnet_bg",
-            "target_anchor": "center_left",
-            "self_anchor": "center_right",
-            "offset": {
-                "x": -150
-            }
-        },
-        "border": {
-            "type": "solid",
-            "color": "#808080",
-            "width": 2
-        }
-    },
-    {
-        "id": "pri_sipr_vnet_bg",
-        "type": "shape",
-        "shape": "rounded_rectangle",
-        "color": "#F2F2F2",
-        "size": [
-            300,
-            300
-        ],
-        "layer": 0,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_vnet_bg",
-            "target_anchor": "bottom_center",
-            "self_anchor": "top_center",
-            "offset": {
-                "y": 150
-            }
-        },
-        "border": {
-            "type": "solid",
-            "color": "#808080",
-            "width": 2
-        }
-    },
-    {
-        "id": "onprem_bg",
-        "type": "shape",
-        "shape": "rounded_rectangle",
-        "color": "#D6EAF8",
-        "size": [
-            300,
-            300
-        ],
-        "layer": 0,
-        "placement": {
-            "type": "relative",
-            "target_id": "pri_sipr_vnet_bg",
-            "target_anchor": "left",
-            "self_anchor": "right",
-            "offset": {
-                "x": -400
-            }
-        },
-        "border": {
-            "type": "solid",
-            "color": "#2E86C1",
-            "width": 2
-        }
-    },
-    {
-        "id": "hub_internal_subnet",
-        "type": "shape",
-        "shape": "rounded_rectangle",
-        "color": "#E3E3E3",
-        "size": [
-            200,
-            460
-        ],
-        "layer": 1,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_vnet_bg",
-            "target_anchor": "center_left",
-            "self_anchor": "center_left",
-            "offset": {
-                "x": 20
-            }
-        },
-        "border": {
-            "type": "dashed",
-            "color": "#AAAAAA",
-            "width": 1
-        }
-    },
-    {
-        "id": "hub_external_subnet",
-        "type": "shape",
-        "shape": "rounded_rectangle",
-        "color": "#E3E3E3",
-        "size": [
-            200,
-            460
-        ],
-        "layer": 1,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_vnet_bg",
-            "target_anchor": "center_right",
-            "self_anchor": "center_right",
-            "offset": {
-                "x": -20
-            }
-        },
-        "border": {
-            "type": "dashed",
-            "color": "#AAAAAA",
-            "width": 1
-        }
-    },
-    {
-        "id": "spoke_subnet",
-        "type": "shape",
-        "shape": "rounded_rectangle",
-        "color": "#E3E3E3",
-        "size": [
-            260,
-            200
-        ],
-        "layer": 1,
-        "placement": {
-            "type": "relative",
-            "target_id": "spoke_vnet_bg",
-            "target_anchor": "center",
-            "self_anchor": "center"
-        },
-        "border": {
-            "type": "dashed",
-            "color": "#AAAAAA",
-            "width": 1
-        }
-    },
-    {
-        "id": "gateway_subnet",
-        "type": "shape",
-        "shape": "rounded_rectangle",
-        "color": "#E3E3E3",
-        "size": [
-            260,
-            200
-        ],
-        "layer": 1,
-        "placement": {
-            "type": "relative",
-            "target_id": "pri_sipr_vnet_bg",
-            "target_anchor": "center",
-            "self_anchor": "center"
-        },
-        "border": {
-            "type": "dashed",
-            "color": "#AAAAAA",
-            "width": 1
-        }
-    },
-    {
-        "id": "hub_vnet_icon",
-        "type": "icon",
-        "icon_id": "azure-vnet",
-        "label": {
-            "text": "vnet-prd-hub-001",
-            "position": "right"
-        },
-        "size": [
-            48,
-            48
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_vnet_bg",
-            "target_anchor": "top_left",
-            "self_anchor": "center",
-            "offset": {
-                "x": 15,
-                "y": 15
-            }
-        }
-    },
-    {
-        "id": "spoke_vnet_icon",
-        "type": "icon",
-        "icon_id": "azure-vnet",
-        "label": {
-            "text": "Spoke VNet",
-            "position": "right"
-        },
-        "size": [
-            48,
-            48
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "spoke_vnet_bg",
-            "target_anchor": "top_left",
-            "self_anchor": "center",
-            "offset": {
-                "x": 15,
-                "y": 15
-            }
-        }
-    },
-    {
-        "id": "pri_sipr_vnet_icon",
-        "type": "icon",
-        "icon_id": "azure-vnet",
-        "label": {
-            "text": "PRI-SIPR-AZURE-HUB",
-            "position": "right"
-        },
-        "size": [
-            48,
-            48
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "pri_sipr_vnet_bg",
-            "target_anchor": "top_left",
-            "self_anchor": "center",
-            "offset": {
-                "x": 15,
-                "y": 15
-            }
-        }
-    },
-    {
-        "id": "onprem_hq_icon",
-        "type": "icon",
-        "icon_id": "onprem-hq",
-        "label": {
-            "text": "On-Premise HQ",
-            "position": "right"
-        },
-        "size": [
-            48,
-            48
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "onprem_bg",
-            "target_anchor": "top_left",
-            "self_anchor": "center",
-            "offset": {
-                "x": 15,
-                "y": 15
-            }
-        }
-    },
-    {
-        "id": "web_vm",
-        "type": "icon",
-        "icon_id": "azure-vm",
-        "label": "VM",
-        "size": [
-            64,
-            64
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "spoke_subnet",
-            "target_anchor": "center",
-            "self_anchor": "center"
-        }
-    },
-    {
-        "id": "route_table_icon",
-        "type": "icon",
-        "icon_id": "azure-route-table",
-        "label": "Route Table",
-        "size": [
-            48,
-            48
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "spoke_subnet",
-            "target_anchor": "bottom_right",
-            "self_anchor": "center",
-            "offset": {
-                "x": -15,
-                "y": -15
-            }
-        }
-    },
-    {
-        "id": "route_table_icon_VPN",
-        "type": "icon",
-        "icon_id": "azure-route-table",
-        "label": "Route Table",
-        "size": [
-            48,
-            48
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "gateway_subnet",
-            "target_anchor": "bottom_right",
-            "self_anchor": "center",
-            "offset": {
-                "x": -15,
-                "y": -15
-            }
-        }
-    },
-    {
-        "id": "VPN_gw",
-        "type": "icon",
-        "icon_id": "azure-vpn",
-        "label": "VPN Gateway",
-        "size": [
-            64,
-            64
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "gateway_subnet",
-            "target_anchor": "center",
-            "self_anchor": "center"
-        }
-    },
-    {
-        "id": "fortimanager",
-        "type": "icon",
-        "icon_id": "fortinet-fmg",
-        "label": "FortiManager",
-        "size": [
-            80,
-            80
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "onprem_bg",
-            "target_anchor": "center",
-            "self_anchor": "center"
-        }
-    },
-    {
-        "id": "fgt_a",
-        "type": "icon",
-        "icon_id": "fortinet-fw",
-        "label": "vm-prd-fgt-1",
-        "size": [
-            80,
-            80
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_vnet_bg",
-            "target_anchor": "center",
-            "self_anchor": "center",
-            "offset": {
-                "y": -100
-            }
-        }
-    },
-    {
-        "id": "fgt_b",
-        "type": "icon",
-        "icon_id": "fortinet-fw",
-        "label": "vm-prd-fgt-2",
-        "size": [
-            80,
-            80
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_vnet_bg",
-            "target_anchor": "center",
-            "self_anchor": "center",
-            "offset": {
-                "y": 100
-            }
-        }
-    },
-    {
-        "id": "ilb",
-        "type": "icon",
-        "icon_id": "azure-lb",
-        "label": "ilb-prd-hub-001",
-        "size": [
-            64,
-            64
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_internal_subnet",
-            "target_anchor": "center",
-            "self_anchor": "center"
-        }
-    },
-    {
-        "id": "elb",
-        "type": "icon",
-        "icon_id": "azure-lb",
-        "label": "elb-prd-hub-001",
-        "size": [
-            64,
-            64
-        ],
-        "layer": 2,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_external_subnet",
-            "target_anchor": "center",
-            "self_anchor": "center"
-        }
-    },
-    {
-        "id": "public_ip_icon",
-        "type": "icon",
-        "icon_id": "azure-public-ip",
-        "size": [
-            32,
-            32
-        ],
-        "layer": 3,
-        "placement": {
-            "type": "relative",
-            "target_id": "elb",
-            "target_anchor": "top_right",
-            "self_anchor": "center"
-        }
-    },
-    {
-        "id": "internet",
-        "type": "icon",
-        "icon_id": "generic-internet",
-        "label": "Internet",
-        "size": [
-            80,
-            80
-        ],
-        "layer": 1,
-        "placement": {
-            "type": "relative",
-            "target_id": "hub_vnet_bg",
-            "target_anchor": "center_right",
-            "self_anchor": "center",
-            "offset": {
-                "x": 150
-            }
-        }
+    "border": {
+      "type": "solid",
+      "color": "#808080",
+      "width": 2
     }
+  },
+  {
+    "id": "spoke_vnet_bg",
+    "type": "shape",
+    "shape": "rounded_rectangle",
+    "color": "#F2F2F2",
+    "size": [300, 300],
+    "layer": 0,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_vnet_bg",
+      "target_anchor": "center_left",
+      "self_anchor": "center_right",
+      "offset": {
+        "x": -150
+      }
+    },
+    "border": {
+      "type": "solid",
+      "color": "#808080",
+      "width": 2
+    }
+  },
+  {
+    "id": "pri_sipr_vnet_bg",
+    "type": "shape",
+    "shape": "rounded_rectangle",
+    "color": "#F2F2F2",
+    "size": [300, 300],
+    "layer": 0,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_vnet_bg",
+      "target_anchor": "bottom_center",
+      "self_anchor": "top_center",
+      "offset": {
+        "y": 150
+      }
+    },
+    "border": {
+      "type": "solid",
+      "color": "#808080",
+      "width": 2
+    }
+  },
+  {
+    "id": "onprem_bg",
+    "type": "shape",
+    "shape": "rounded_rectangle",
+    "color": "#D6EAF8",
+    "size": [300, 300],
+    "layer": 0,
+    "placement": {
+      "type": "relative",
+      "target_id": "pri_sipr_vnet_bg",
+      "target_anchor": "left",
+      "self_anchor": "right",
+      "offset": {
+        "x": -400
+      }
+    },
+    "border": {
+      "type": "solid",
+      "color": "#2E86C1",
+      "width": 2
+    }
+  },
+  {
+    "id": "hub_internal_subnet",
+    "type": "shape",
+    "shape": "rounded_rectangle",
+    "color": "#E3E3E3",
+    "size": [200, 460],
+    "layer": 1,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_vnet_bg",
+      "target_anchor": "center_left",
+      "self_anchor": "center_left",
+      "offset": {
+        "x": 20
+      }
+    },
+    "border": {
+      "type": "dashed",
+      "color": "#AAAAAA",
+      "width": 1
+    }
+  },
+  {
+    "id": "hub_external_subnet",
+    "type": "shape",
+    "shape": "rounded_rectangle",
+    "color": "#E3E3E3",
+    "size": [200, 460],
+    "layer": 1,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_vnet_bg",
+      "target_anchor": "center_right",
+      "self_anchor": "center_right",
+      "offset": {
+        "x": -20
+      }
+    },
+    "border": {
+      "type": "dashed",
+      "color": "#AAAAAA",
+      "width": 1
+    }
+  },
+  {
+    "id": "spoke_subnet",
+    "type": "shape",
+    "shape": "rounded_rectangle",
+    "color": "#E3E3E3",
+    "size": [260, 200],
+    "layer": 1,
+    "placement": {
+      "type": "relative",
+      "target_id": "spoke_vnet_bg",
+      "target_anchor": "center",
+      "self_anchor": "center"
+    },
+    "border": {
+      "type": "dashed",
+      "color": "#AAAAAA",
+      "width": 1
+    }
+  },
+  {
+    "id": "gateway_subnet",
+    "type": "shape",
+    "shape": "rounded_rectangle",
+    "color": "#E3E3E3",
+    "size": [260, 200],
+    "layer": 1,
+    "placement": {
+      "type": "relative",
+      "target_id": "pri_sipr_vnet_bg",
+      "target_anchor": "center",
+      "self_anchor": "center"
+    },
+    "border": {
+      "type": "dashed",
+      "color": "#AAAAAA",
+      "width": 1
+    }
+  },
+  {
+    "id": "hub_vnet_icon",
+    "type": "icon",
+    "icon_id": "azure-vnet",
+    "label": {
+      "text": "vnet-prd-hub-001",
+      "position": "right"
+    },
+    "size": [48, 48],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_vnet_bg",
+      "target_anchor": "top_left",
+      "self_anchor": "center",
+      "offset": {
+        "x": 15,
+        "y": 15
+      }
+    }
+  },
+  {
+    "id": "spoke_vnet_icon",
+    "type": "icon",
+    "icon_id": "azure-vnet",
+    "label": {
+      "text": "Spoke VNet",
+      "position": "right"
+    },
+    "size": [48, 48],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "spoke_vnet_bg",
+      "target_anchor": "top_left",
+      "self_anchor": "center",
+      "offset": {
+        "x": 15,
+        "y": 15
+      }
+    }
+  },
+  {
+    "id": "pri_sipr_vnet_icon",
+    "type": "icon",
+    "icon_id": "azure-vnet",
+    "label": {
+      "text": "vnet-expressroute-001",
+      "position": "right"
+    },
+    "size": [48, 48],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "pri_sipr_vnet_bg",
+      "target_anchor": "top_left",
+      "self_anchor": "center",
+      "offset": {
+        "x": 15,
+        "y": 15
+      }
+    }
+  },
+  {
+    "id": "onprem_hq_icon",
+    "type": "icon",
+    "icon_id": "onprem-hq",
+    "label": {
+      "text": "On-Premise HQ",
+      "position": "right"
+    },
+    "size": [48, 48],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "onprem_bg",
+      "target_anchor": "top_left",
+      "self_anchor": "center",
+      "offset": {
+        "x": 15,
+        "y": 15
+      }
+    }
+  },
+  {
+    "id": "web_vm",
+    "type": "icon",
+    "icon_id": "azure-vm",
+    "label": "VM",
+    "size": [64, 64],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "spoke_subnet",
+      "target_anchor": "center",
+      "self_anchor": "center"
+    }
+  },
+  {
+    "id": "route_table_icon",
+    "type": "icon",
+    "icon_id": "azure-route-table",
+    "label": "Route Table",
+    "size": [48, 48],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "spoke_subnet",
+      "target_anchor": "bottom_right",
+      "self_anchor": "center",
+      "offset": {
+        "x": -15,
+        "y": -15
+      }
+    }
+  },
+  {
+    "id": "route_table_icon_VPN",
+    "type": "icon",
+    "icon_id": "azure-route-table",
+    "label": "Route Table",
+    "size": [48, 48],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "gateway_subnet",
+      "target_anchor": "bottom_right",
+      "self_anchor": "center",
+      "offset": {
+        "x": -15,
+        "y": -15
+      }
+    }
+  },
+  {
+    "id": "VPN_gw",
+    "type": "icon",
+    "icon_id": "azure-er",
+    "label": "ExpressRoute Gateway",
+    "size": [64, 64],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "gateway_subnet",
+      "target_anchor": "center",
+      "self_anchor": "center"
+    }
+  },
+  {
+    "id": "fortimanager",
+    "type": "icon",
+    "icon_id": "fortinet-fmg",
+    "label": "FortiManager",
+    "size": [80, 80],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "onprem_bg",
+      "target_anchor": "center",
+      "self_anchor": "center"
+    }
+  },
+  {
+    "id": "fgt_a",
+    "type": "icon",
+    "icon_id": "fortinet-fw",
+    "label": "vm-prd-fgt-1",
+    "size": [80, 80],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_vnet_bg",
+      "target_anchor": "center",
+      "self_anchor": "center",
+      "offset": {
+        "y": -100
+      }
+    }
+  },
+  {
+    "id": "fgt_b",
+    "type": "icon",
+    "icon_id": "fortinet-fw",
+    "label": "vm-prd-fgt-2",
+    "size": [80, 80],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_vnet_bg",
+      "target_anchor": "center",
+      "self_anchor": "center",
+      "offset": {
+        "y": 100
+      }
+    }
+  },
+  {
+    "id": "ilb",
+    "type": "icon",
+    "icon_id": "azure-lb",
+    "label": "ilb-prd-hub-001",
+    "size": [64, 64],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_internal_subnet",
+      "target_anchor": "center",
+      "self_anchor": "center"
+    }
+  },
+  {
+    "id": "elb",
+    "type": "icon",
+    "icon_id": "azure-lb",
+    "label": "elb-prd-hub-001",
+    "size": [64, 64],
+    "layer": 2,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_external_subnet",
+      "target_anchor": "center",
+      "self_anchor": "center"
+    }
+  },
+  {
+    "id": "public_ip_icon",
+    "type": "icon",
+    "icon_id": "azure-public-ip",
+    "size": [32, 32],
+    "layer": 3,
+    "placement": {
+      "type": "relative",
+      "target_id": "elb",
+      "target_anchor": "top_right",
+      "self_anchor": "center"
+    }
+  },
+  {
+    "id": "internet",
+    "type": "icon",
+    "icon_id": "generic-internet",
+    "label": "Internet",
+    "size": [80, 80],
+    "layer": 1,
+    "placement": {
+      "type": "relative",
+      "target_id": "hub_vnet_bg",
+      "target_anchor": "center_right",
+      "self_anchor": "center",
+      "offset": {
+        "x": 150
+      }
+    }
+  }
 ]

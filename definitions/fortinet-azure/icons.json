@@ -1,12 +1,12 @@
 {
-    "azure-vm": "azure/compute/10021-icon-service-Virtual-Machine.svg",
-    "azure-lb": "azure/networking/10062-icon-service-Load-Balancers.svg",
-    "fortinet-fw": "fortinet/FortiGate.svg",
-    "generic-internet": "generic/internet.svg",
-    "azure-vnet": "azure/networking/10061-icon-service-Virtual-Networks.svg",
-    "azure-route-table": "azure/networking/10082-icon-service-Route-Tables.svg",
-    "azure-public-ip": "azure/networking/10069-icon-service-Public-IP-Addresses.svg",
-    "azure-vpn": "azure/networking/10063-icon-service-Virtual-Network-Gateways.svg",
-    "onprem-hq": "generic/generic-building.svg",
-    "fortinet-fmg": "fortinet/FortiManager.svg"
+  "azure-vm": "azure/compute/10021-icon-service-Virtual-Machine.svg",
+  "azure-lb": "azure/networking/10062-icon-service-Load-Balancers.svg",
+  "fortinet-fw": "fortinet/FortiGate.svg",
+  "generic-internet": "generic/internet.svg",
+  "azure-vnet": "azure/networking/10061-icon-service-Virtual-Networks.svg",
+  "azure-route-table": "azure/networking/10082-icon-service-Route-Tables.svg",
+  "azure-public-ip": "azure/networking/10069-icon-service-Public-IP-Addresses.svg",
+  "azure-er": "azure/networking/10063-icon-service-Virtual-Network-Gateways.svg",
+  "onprem-hq": "generic/generic-building.svg",
+  "fortinet-fmg": "fortinet/FortiManager.svg"
 }

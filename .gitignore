@@ -1,10 +1,12 @@
 # excluded definitions
 definitions/ores-consulting-methodology/
 definitions/ncia-consulting-methodology/
+definitions/ncia-consulting-methodology-FA/
 
 #excluded outputs
 output/ores-consulting-methodology.png
 output/ncia-consulting-methodology.png
+output/ncia-consulting-methodology-FA.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

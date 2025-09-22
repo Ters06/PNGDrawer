@@ -79,7 +79,7 @@
         "source_anchor": "center_left",
         "target_anchor": "center_right",
         "color": "#9B59B6",
-        "label": "IPsec tunnel",
+        "label": "ExpressRoute Circuit",
         "connection": {
             "direction": "bidirectional",
             "type": "s-curve",
